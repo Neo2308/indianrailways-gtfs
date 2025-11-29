@@ -31,11 +31,11 @@ TODO: Add instructions to get API key
 **Data generated**: Around 9th Nov 2025
 
 **Station fixing report (from the code output):**
-* 519 total errors
+* 451 total errors
 * 0 total warnings
-* 101 unique error stations
+* 75 unique error stations
 * 0 unique warning stations
-* 525 ignored trains
+* 457 ignored trains
 
 **GTFS review report** (from [transport.data.gouv.fr](https://transport.data.gouv.fr/))
 https://transport.data.gouv.fr/validation/517479?token=3ffe848d-2f44-47a6-aa60-c375ac43639b
