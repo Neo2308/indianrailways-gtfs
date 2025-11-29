@@ -75,7 +75,43 @@ func (g *GtfsWriter) AddCalendar(calendar types.Calendar) {
 	g.calendar = append(g.calendar, calendar)
 }
 
+func (g *GtfsWriter) Sort() {
+	slices.SortFunc(g.agencies, func(a, b types.Agency) int {
+		return strings.Compare(a.AgencyId, b.AgencyId)
+	})
+	slices.SortFunc(g.feedInfo, func(a, b types.FeedInfo) int {
+		return strings.Compare(a.FeedPublisherName, b.FeedPublisherName)
+	})
+	slices.SortFunc(g.stops, func(a, b types.Stop) int {
+		return strings.Compare(a.StopId, b.StopId)
+	})
+	slices.SortFunc(g.calendar, func(a, b types.Calendar) int {
+		// Sorting in descending order of running days
+		return -strings.Compare(a.GetRunningDays(), b.GetRunningDays())
+	})
+	slices.SortFunc(g.routes, func(a, b types.Route) int {
+		return strings.Compare(a.RouteId, b.RouteId)
+	})
+	slices.SortFunc(g.trips, func(a, b types.Trip) int {
+		// RouteId is always unique and same as TripId in our case, but keeping for future proofing
+		if a.RouteId != b.RouteId {
+			return strings.Compare(a.RouteId, b.RouteId)
+		}
+		if a.ServiceId != b.ServiceId {
+			return strings.Compare(a.ServiceId, b.ServiceId)
+		}
+		return strings.Compare(a.TripId, b.TripId)
+	})
+	slices.SortFunc(g.stopTimes, func(a, b types.StopTime) int {
+		if a.TripId != b.TripId {
+			return strings.Compare(a.TripId, b.TripId)
+		}
+		return a.StopSequence - b.StopSequence
+	})
+}
+
 func (g *GtfsWriter) WriteToZip() error {
+	g.Sort()
 	if err := g.writeCSVFile(g.agencies, "agency.txt"); err != nil {
 		return err
 	}
