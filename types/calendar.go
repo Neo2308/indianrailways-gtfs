@@ -1,5 +1,7 @@
 package types
 
+import "fmt"
+
 type Calendar struct {
 	ServiceId string `json:"service_id" csv:"service_id"`
 	Monday    int    `json:"monday" csv:"monday"`
@@ -11,4 +13,8 @@ type Calendar struct {
 	Sunday    int    `json:"sunday" csv:"sunday"`
 	StartDate Date   `json:"start_date" csv:"start_date"`
 	EndDate   Date   `json:"end_date" csv:"end_date"`
+}
+
+func (c *Calendar) GetRunningDays() string {
+	return fmt.Sprintf("%d-%d-%d-%d-%d-%d-%d", c.Monday, c.Tuesday, c.Wednesday, c.Thursday, c.Friday, c.Saturday, c.Sunday)
 }
