@@ -289,6 +289,198 @@ var MissingStations = map[string]Station{
 		Lat:  "19.0623648",
 		Lng:  "72.8991331",
 	},
+	"REAI": {
+		Name: "",
+		Code: "REAI",
+		Lat:  "33.1079332",
+		Lng:  "74.8446468",
+	},
+	"SION": {
+		Name: "",
+		Code: "SION",
+		Lat:  "19.0465101",
+		Lng:  "72.8583906",
+	},
+	"MBDP": {
+		Name: "",
+		Code: "MBDP",
+		Lat:  "25.9131355",
+		Lng:  "81.996984",
+	},
+	"ANT": {
+		Name: "",
+		Code: "ANT",
+		Lat:  "33.7386014",
+		Lng:  "75.10572",
+	},
+	"PDWA": {
+		Name: "",
+		Code: "PDWA",
+		Lat:  "24.7886901",
+		Lng:  "73.0371538",
+	},
+	"LIL": {
+		Name: "",
+		Code: "LIL",
+		Lat:  "25.750917",
+		Lng:  "70.4696854",
+	},
+	"KIAD": {
+		Name: "",
+		Code: "KIAD",
+		Lat:  "13.210671",
+		Lng:  "77.6734591",
+	},
+	"GATL": {
+		Name: "",
+		Code: "GATL",
+		Lat:  "24.3059684",
+		Lng:  "76.5131543",
+	},
+	"JAPN": {
+		Name: "",
+		Code: "JAPN",
+		Lat:  "24.5330234",
+		Lng:  "76.1938206",
+	},
+	"JAKA": {
+		Name: "",
+		Code: "JAKA",
+		Lat:  "24.4594771",
+		Lng:  "76.2973327",
+	},
+	"MASS": {
+		Name: "",
+		Code: "MASS",
+		Lat:  "13.0833296",
+		Lng:  "80.2737504",
+	},
+	"NITR": {
+		Name: "",
+		Code: "NITR",
+		Lat:  "21.1580435",
+		Lng:  "79.1176408",
+	},
+	"CBCC": {
+		Name: "",
+		Code: "CBCC",
+		Lat:  "23.0806839",
+		Lng:  "72.5405713",
+	},
+	"GKG": {
+		Name: "",
+		Code: "GKG",
+		Lat:  "28.2463718",
+		Lng:  "76.617281",
+	},
+	"RGBP": {
+		Name: "",
+		Code: "RGBP",
+		Lat:  "24.7421304",
+		Lng:  "93.2347448",
+	},
+	"KUCE": {
+		Name: "",
+		Code: "KUCE",
+		Lat:  "22.0083698",
+		Lng:  "86.697195",
+	},
+	"JSE": {
+		Name: "",
+		Code: "JSE",
+		Lat:  "21.8734956",
+		Lng:  "86.8134883",
+	},
+	"JRTB": {
+		Name: "",
+		Code: "JRTB",
+		Lat:  "20.7491495",
+		Lng:  "83.7093213",
+	},
+	"PUKK": {
+		Name: "",
+		Code: "PUKK",
+		Lat:  "20.6272839",
+		Lng:  "84.4333673",
+	},
+	"TLB": {
+		Name: "",
+		Code: "TLB",
+		Lat:  "24.6949711",
+		Lng:  "86.5569831",
+	},
+	"RJLA": {
+		Name: "",
+		Code: "RJLA",
+		Lat:  "24.7560385",
+		Lng:  "86.4214333",
+	},
+	"JLPH": {
+		Name: "",
+		Code: "JLPH",
+		Lat:  "25.3043939",
+		Lng:  "86.0038441",
+	},
+	"SJHG": {
+		Name: "",
+		Code: "SJHG",
+		Lat:  "25.02174",
+		Lng:  "86.2013367",
+	},
+	"RMPR": {
+		Name: "",
+		Code: "RMPR",
+		Lat:  "25.1714457",
+		Lng:  "86.135526",
+	},
+	"TNJR": {
+		Name: "",
+		Code: "TNJR",
+		Lat:  "28.3856411",
+		Lng:  "76.8232194",
+	},
+	"KAKI": {
+		Name: "",
+		Code: "KAKI",
+		Lat:  "24.54252",
+		Lng:  "86.9941051",
+	},
+	"MCDA": {
+		Name: "",
+		Code: "MCDA",
+		Lat:  "26.0552549",
+		Lng:  "81.8984076",
+	},
+	"MBDD": {
+		Name: "",
+		Code: "MBDD",
+		Lat:  "25.8023933",
+		Lng:  "82.0405316",
+	},
+	"SBTJ": {
+		Name: "",
+		Code: "SBTJ",
+		Lat:  "25.8012076",
+		Lng:  "81.9338334",
+	},
+	"FSW": {
+		Name: "",
+		Code: "FSW",
+		Lat:  "29.91248",
+		Lng:  "74.1009351",
+	},
+	"BPGJ": {
+		Name: "",
+		Code: "BPGJ",
+		Lat:  "25.6998562",
+		Lng:  "85.1303458",
+	},
+	"RD": {
+		Name: "",
+		Code: "RD",
+		Lat:  "26.0976539",
+		Lng:  "85.3841908",
+	},
 }
 
 var IncorrectStationCodes = map[string]Station{
@@ -352,8 +544,14 @@ var IncorrectStationCodes = map[string]Station{
 		Lat:  "24.1038064",
 		Lng:  "81.8668425",
 	},
+	"KEU": {
+		Name: "KETTUR",
+		Code: "KEU",
+		Lat:  "18.2896477",
+		Lng:  "74.9504524",
+	},
 }
 
-//var IncorrectStationCodeMapping = map[string]string{
+// var IncorrectStationCodeMapping = map[string]string{
 //	"SMVB": "SMVT",
-//}
+// }

@@ -10,8 +10,34 @@
         "trainServiceProfile": {
             "STA": "15:33",
             "STD": "15:15",
-            "classOfTravel": "GEN",
-            "coachPositionAtSource": [],
+            "classOfTravel": "",
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "SLR",
+                    "coachID": "SLR",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 3
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 4
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 5
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "ANLG",
@@ -21,10 +47,7 @@
             "destinationPF": "",
             "futureTrainFlag": 0,
             "gauge": "NG",
-            "hashMapStationListWTT": {
-                "ANLG": 1,
-                "MAE": 0
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "ANLG": "1",
                 "MAE": "0"
@@ -39,8 +62,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -59,26 +80,14 @@
             "trainTypeName": "PASSENGER",
             "trainTypeNameHindi": "पैसेंजर",
             "travelTime": "00:18",
-            "utsClassOfTravel": "GEN",
+            "utsClassOfTravel": "",
             "utsFareCategory": "O",
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXPAS",
-                "PASGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-SLR-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "ENG-SLR-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 0,
                     "division": "BB",
                     "idTrainDef": 789358,
@@ -107,12 +116,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-SLR-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "ENG-SLR-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 3,
                     "division": "BB",
                     "idTrainDef": 789358,
@@ -140,20 +143,7 @@
                     "zone": "CR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "18.989444",
-                    "longitude": "73.271111",
-                    "serialNumber": 1,
-                    "station": "MAE"
-                },
-                {
-                    "lattitude": "",
-                    "longitude": "",
-                    "serialNumber": 2,
-                    "station": "ANLG"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

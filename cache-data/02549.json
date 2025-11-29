@@ -13,11 +13,6 @@
             "classOfTravel": "",
             "coachPositionAtSource": [
                 {
-                    "coachClass": "ENG",
-                    "coachID": "ENG",
-                    "positionFromEngine": 0
-                },
-                {
                     "coachClass": "GEN",
                     "coachID": "GEN",
                     "positionFromEngine": 1
@@ -40,15 +35,18 @@
             "destinationName": "DARJEELING",
             "destinationNameHindi": "दार्जिलिंग",
             "destinationPF": "2",
-            "futureTrainFlag": 1,
+            "futureTrainFlag": 0,
             "gauge": "NG",
-            "hashMapStationListWTT": {},
+            "hashMapStationListWTT": {
+                "DJ": 2,
+                "GHUM": 1
+            },
             "hashMapStationMultiList": {
                 "DJ": "0,2",
                 "GHUM": "1"
             },
-            "heritageTrainFlag": 1,
-            "heritageTrainSection": "DHR",
+            "heritageTrainFlag": 0,
+            "heritageTrainSection": "",
             "idTrainDef": 811015,
             "internationalTrainFlag": 0,
             "mainTrainNo": "",
@@ -57,8 +55,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 1,
             "rakeReversalList": "",
-            "reservedTrainFlag": 1,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -82,20 +78,9 @@
             "utsFareCategoryDesc": "",
             "utsMstAllowed": 0,
             "utsTrainFlag": 0,
-            "vTrainGroup": [
-                "SHOW_IN_NTES",
-                "TODGRP",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-GEN-GEN-GEN",
-                    "departureCoachPosition": "ENG-GEN-GEN-GEN",
                     "distanceFromSource": 0,
                     "division": "KIR",
                     "idTrainDef": 811015,
@@ -124,12 +109,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "ENG-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-GEN-GEN-GEN",
-                    "departureCoachPosition": "ENG-GEN-GEN-GEN",
                     "distanceFromSource": 6,
                     "division": "KIR",
                     "idTrainDef": 811015,
@@ -158,12 +137,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "ENG-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 12,
                     "division": "KIR",
                     "idTrainDef": 811015,
@@ -191,7 +164,35 @@
                     "zone": "NFR"
                 }
             ],
-            "vTrainServiceScheduleWTT": null,
+            "vTrainServiceScheduleWTT": [
+                {
+                    "WTT_STA": "",
+                    "WTT_STD": "13:25",
+                    "kms": 0,
+                    "lattitude": "27.037741",
+                    "longitude": "88.262916",
+                    "serialNumber": 1,
+                    "station": "DJ"
+                },
+                {
+                    "WTT_STA": "14:10",
+                    "WTT_STD": "14:35",
+                    "kms": 6,
+                    "lattitude": "27.008323",
+                    "longitude": "88.253903",
+                    "serialNumber": 2,
+                    "station": "GHUM"
+                },
+                {
+                    "WTT_STA": "15:05",
+                    "WTT_STD": "",
+                    "kms": 12,
+                    "lattitude": "27.037741",
+                    "longitude": "88.262916",
+                    "serialNumber": 3,
+                    "station": "DJ"
+                }
+            ],
             "validFrom": "20-Sep-2025",
             "validTo": "05-Jan-2026"
         }

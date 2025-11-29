@@ -11,7 +11,23 @@
             "STA": "13:50",
             "STD": "13:05",
             "classOfTravel": "GEN",
-            "coachPositionAtSource": [],
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 3
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "WKR",
@@ -21,14 +37,7 @@
             "destinationPF": "1",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {
-                "DV": 4,
-                "MU": 3,
-                "MVI": 0,
-                "NZG": 1,
-                "RF": 2,
-                "WKR": 5
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "MU": "3",
                 "MVI": "0",
@@ -46,8 +55,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -71,22 +78,9 @@
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "DMU",
-                "MEXPAS",
-                "PASGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN",
                     "distanceFromSource": 0,
                     "division": "RJT",
                     "idTrainDef": 785501,
@@ -115,12 +109,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN",
                     "distanceFromSource": 3,
                     "division": "RJT",
                     "idTrainDef": 785501,
@@ -149,12 +137,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN",
                     "distanceFromSource": 10,
                     "division": "RJT",
                     "idTrainDef": 785501,
@@ -183,12 +165,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN",
                     "distanceFromSource": 12,
                     "division": "RJT",
                     "idTrainDef": 785501,
@@ -217,12 +193,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN",
                     "distanceFromSource": 28,
                     "division": "RJT",
                     "idTrainDef": 785501,
@@ -250,44 +220,7 @@
                     "zone": "WR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "22.824900",
-                    "longitude": "70.828800",
-                    "serialNumber": 1,
-                    "station": "MVI"
-                },
-                {
-                    "lattitude": "22.814100",
-                    "longitude": "70.854700",
-                    "serialNumber": 2,
-                    "station": "NZG"
-                },
-                {
-                    "lattitude": "22.772600",
-                    "longitude": "70.897500",
-                    "serialNumber": 3,
-                    "station": "RF"
-                },
-                {
-                    "lattitude": "22.752400",
-                    "longitude": "70.910700",
-                    "serialNumber": 4,
-                    "station": "MU"
-                },
-                {
-                    "lattitude": "",
-                    "longitude": "",
-                    "serialNumber": 5,
-                    "station": "DV"
-                },
-                {
-                    "lattitude": "22.622000",
-                    "longitude": "70.965100",
-                    "serialNumber": 6,
-                    "station": "WKR"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

@@ -11,7 +11,33 @@
             "STA": "16:30",
             "STD": "15:34",
             "classOfTravel": "",
-            "coachPositionAtSource": [],
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "OCV",
+                    "coachID": "OCV",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "OCV",
+                    "coachID": "OCV",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "LPR",
+                    "coachID": "PWR",
+                    "positionFromEngine": 3
+                },
+                {
+                    "coachClass": "OCV",
+                    "coachID": "OCV",
+                    "positionFromEngine": 4
+                },
+                {
+                    "coachClass": "OCV",
+                    "coachID": "OCV",
+                    "positionFromEngine": 5
+                }
+            ],
             "daysOfRunFromSource": "Fri,Sat,Sun",
             "daysOfRunFromSourceNumeric": "0000111",
             "destination": "PTP",
@@ -21,10 +47,7 @@
             "destinationPF": "1",
             "futureTrainFlag": 0,
             "gauge": "MG",
-            "hashMapStationListWTT": {
-                "KKD": 0,
-                "PTP": 1
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "KKD": "0",
                 "PTP": "1"
@@ -39,8 +62,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -64,21 +85,9 @@
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXPAS",
-                "PASGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-OCV-OCV-LPR-OCV-OCV",
-                    "departureCoachPosition": "ENG-OCV-OCV-PWR-OCV-OCV",
                     "distanceFromSource": 0,
                     "division": "RTM",
                     "idTrainDef": 790366,
@@ -107,12 +116,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-OCV-OCV-LPR-OCV-OCV",
-                    "arrivalCoachPosition": "ENG-OCV-OCV-PWR-OCV-OCV",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 10,
                     "division": "RTM",
                     "idTrainDef": 790366,
@@ -140,20 +143,7 @@
                     "zone": "WR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "22.478220",
-                    "longitude": "75.859480",
-                    "serialNumber": 1,
-                    "station": "KKD"
-                },
-                {
-                    "lattitude": "22.514182",
-                    "longitude": "75.796952",
-                    "serialNumber": 2,
-                    "station": "PTP"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

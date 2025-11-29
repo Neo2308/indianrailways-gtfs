@@ -10,7 +10,7 @@
         "trainServiceProfile": {
             "STA": "23:10",
             "STD": "22:57",
-            "classOfTravel": "GEN",
+            "classOfTravel": "",
             "coachPositionAtSource": [],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
@@ -21,7 +21,11 @@
             "destinationPF": "2",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {},
+            "hashMapStationListWTT": {
+                "KWDP": 0,
+                "NMKA": 2,
+                "UKLR": 1
+            },
             "hashMapStationMultiList": {
                 "KWDP": "0",
                 "NMKA": "2",
@@ -37,8 +41,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -57,25 +59,14 @@
             "trainTypeName": "SUBURBAN",
             "trainTypeNameHindi": "उपनगरीय",
             "travelTime": "00:13",
-            "utsClassOfTravel": "GEN",
+            "utsClassOfTravel": "",
             "utsFareCategory": "O",
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "EMU",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 0,
                     "division": "SDAH",
                     "idTrainDef": 785787,
@@ -104,12 +95,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 7,
                     "division": "SDAH",
                     "idTrainDef": 785787,
@@ -138,12 +123,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 13,
                     "division": "SDAH",
                     "idTrainDef": 785787,
@@ -171,7 +150,35 @@
                     "zone": "ER"
                 }
             ],
-            "vTrainServiceScheduleWTT": null,
+            "vTrainServiceScheduleWTT": [
+                {
+                    "WTT_STA": "",
+                    "WTT_STD": "22:57",
+                    "kms": 0,
+                    "lattitude": "21.879500",
+                    "longitude": "88.193779",
+                    "serialNumber": 1,
+                    "station": "KWDP"
+                },
+                {
+                    "WTT_STA": "23:02",
+                    "WTT_STD": "23:03",
+                    "kms": 7,
+                    "lattitude": "",
+                    "longitude": "",
+                    "serialNumber": 2,
+                    "station": "UKLR"
+                },
+                {
+                    "WTT_STA": "23:10",
+                    "WTT_STD": "",
+                    "kms": 13,
+                    "lattitude": "21.771700",
+                    "longitude": "88.239000",
+                    "serialNumber": 3,
+                    "station": "NMKA"
+                }
+            ],
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

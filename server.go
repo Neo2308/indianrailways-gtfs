@@ -3,18 +3,19 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/Neo2308/indianrailways-gtfs/types"
-	"github.com/gorilla/mux"
-	"github.com/morikuni/go-geoplot"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/Neo2308/indianrailways-gtfs/types"
+	"github.com/gorilla/mux"
+	"github.com/morikuni/go-geoplot"
 )
 
 const timezone = "Asia/Kolkata"
 
 type Server struct {
-	//mapData   *MapData
+	// mapData   *MapData
 	trainData       map[int]*TrainData
 	stations        map[string]*Station
 	runningDays     map[string]struct{}
@@ -46,7 +47,7 @@ func (s *Server) Setup() error {
 	}
 	trainLists := []string{"VANDE", "SHATABDI", "RAJDHANI"}
 	for _, trainList := range trainLists {
-		//trainNumber, _ := strconv.Atoi(train)
+		// trainNumber, _ := strconv.Atoi(train)
 		err := s.AddTrainList(trainList)
 		if err != nil {
 			fmt.Printf("Error adding trainList %s: %e\n", trainList, err)
@@ -186,10 +187,10 @@ func (s *Server) generateMapForTrainByLiveStation(stationCode string, showMarker
 func (s *Server) generateRouteForTrain(trainNumber int) []*geoplot.LatLng {
 	route := []*geoplot.LatLng{}
 	stationCodes := s.trainData[trainNumber].getRoute()
-	//fmt.Println(stationCodes)
+	// fmt.Println(stationCodes)
 	for _, v := range stationCodes {
 		if _, ok := s.stations[v]; !ok {
-			//fmt.Printf("Station code %s not found in stations map\n", v)
+			// fmt.Printf("Station code %s not found in stations map\n", v)
 			continue
 		}
 		if nextPoint, err := getLatLng(s.stations[v].Lat, s.stations[v].Lng); err == nil {
@@ -239,7 +240,7 @@ func (s *Server) handleGetMapBySearch(w http.ResponseWriter, r *http.Request) {
 	prefixText := vars["prefixText"]
 	// Check if train number is valid
 	if _, ok := s.TrainListData[prefixText]; !ok {
-		//fmt.Printf("Train search for keyword %s not found\n", prefixText)
+		// fmt.Printf("Train search for keyword %s not found\n", prefixText)
 		err := s.AddTrainList(prefixText)
 		if err != nil {
 			fmt.Printf("Error search for keyword %s: %e\n", prefixText, err)
@@ -289,21 +290,22 @@ func (s *Server) handleGetMapByLiveStation(w http.ResponseWriter, r *http.Reques
 }
 
 func (s *Server) populateAllTrains(w http.ResponseWriter, r *http.Request) {
-	//vars := mux.Vars(r)
-	//prefixText := vars["prefixText"]
+	// vars := mux.Vars(r)
+	// prefixText := vars["prefixText"]
 	//
 
 	for i := 0; i <= 999; i++ {
-		//if _, ok := s.trainData[i]; ok {
+		// if _, ok := s.trainData[i]; ok {
 		//	continue
-		//}
+		// }
 		prefixText := fmt.Sprintf("%03d", i)
 		// Check if train number is valid
 		if _, ok := s.TrainListData[prefixText]; !ok {
-			//fmt.Printf("Train search for keyword %s not found\n", prefixText)
+			// fmt.Printf("Train search for keyword %s not found\n", prefixText)
 			_ = s.AddTrainList(prefixText)
 		}
 	}
+	fmt.Println(getStationFixingReport())
 	err := geoplot.ServeMap(w, r, s.generateMap().getMap())
 	if err != nil {
 		fmt.Println(err)
@@ -370,30 +372,30 @@ func (s *Server) populateGTFSWriter(gw *GtfsWriter) {
 	for _, train := range s.trainData {
 		// TODO: Remove after fixing station issues
 		tStations := train.getStations()
-		//ok := true
+		// ok := true
 		if len(tStations) == 0 {
 			fmt.Printf("Skipping train %s because it has no valid stations\n", train.getTrainNumber())
 			continue
 		}
-		//for _, station := range tStations {
+		// for _, station := range tStations {
 		//	fixStation(&station)
 		//	if stationHasProblems(&station) {
 		//		fmt.Printf("Skipping train %s because of station %s\n", station, train.getTrainNumber())
 		//		ok = false
 		//		break
 		//	}
-		//}
-		//if !ok {
+		// }
+		// if !ok {
 		//	continue
-		//}
+		// }
 		gw.AddRoute(train.toRoute())
 		gw.AddTrips(train.toTrip())
 		gw.AddStopTimes(train.toStopTimes())
 	}
 
-	//for trainNumber, train := range s.trainData {
+	// for trainNumber, train := range s.trainData {
 	//	serviceId := fmt.Sprintf("S%d", trainNumber)
-	//}
+	// }
 
 }
 

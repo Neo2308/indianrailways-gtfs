@@ -11,7 +11,23 @@
             "STA": "11:50",
             "STD": "10:20",
             "classOfTravel": "GEN",
-            "coachPositionAtSource": [],
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "SLR",
+                    "coachID": "GRD",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "SLRD",
+                    "coachID": "GRD",
+                    "positionFromEngine": 3
+                }
+            ],
             "daysOfRunFromSource": "Mon,Tue,Wed,Thu,Fri,Sat",
             "daysOfRunFromSourceNumeric": "1111110",
             "destination": "KNH",
@@ -21,13 +37,7 @@
             "destinationPF": "1",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {
-                "AIT": 3,
-                "BHUA": 2,
-                "KNH": 4,
-                "ORAI": 1,
-                "SSKI": 0
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "AIT": "3",
                 "BHUA": "2",
@@ -45,8 +55,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -70,21 +78,9 @@
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXPAS",
-                "PASGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "3",
-                    "departureCoachClass": "ENG-SLR-GEN-SLRD",
-                    "departureCoachPosition": "ENG-GRD-GEN-GRD",
                     "distanceFromSource": 0,
                     "division": "JHS",
                     "idTrainDef": 787023,
@@ -113,12 +109,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "3",
-                    "arrivalCoachClass": "ENG-SLR-GEN-SLRD",
-                    "arrivalCoachPosition": "ENG-GRD-GEN-GRD",
-                    "depPWDCoachPosition": "3",
-                    "departureCoachClass": "ENG-SLR-GEN-SLRD",
-                    "departureCoachPosition": "ENG-GRD-GEN-GRD",
                     "distanceFromSource": 8,
                     "division": "JHS",
                     "idTrainDef": 787023,
@@ -147,12 +137,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "3",
-                    "arrivalCoachClass": "ENG-SLR-GEN-SLRD",
-                    "arrivalCoachPosition": "ENG-GRD-GEN-GRD",
-                    "depPWDCoachPosition": "3",
-                    "departureCoachClass": "ENG-SLR-GEN-SLRD",
-                    "departureCoachPosition": "ENG-GRD-GEN-GRD",
                     "distanceFromSource": 19,
                     "division": "JHS",
                     "idTrainDef": 787023,
@@ -181,12 +165,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "3",
-                    "arrivalCoachClass": "ENG-SLR-GEN-SLRD",
-                    "arrivalCoachPosition": "ENG-GRD-GEN-GRD",
-                    "depPWDCoachPosition": "3",
-                    "departureCoachClass": "ENG-SLR-GEN-SLRD",
-                    "departureCoachPosition": "ENG-GRD-GEN-GRD",
                     "distanceFromSource": 33,
                     "division": "JHS",
                     "idTrainDef": 787023,
@@ -215,12 +193,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "3",
-                    "arrivalCoachClass": "ENG-SLR-GEN-SLRD",
-                    "arrivalCoachPosition": "ENG-GRD-GEN-GRD",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 46,
                     "division": "JHS",
                     "idTrainDef": 787023,
@@ -248,38 +220,7 @@
                     "zone": "NCR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "",
-                    "longitude": "",
-                    "serialNumber": 1,
-                    "station": "SSKI"
-                },
-                {
-                    "lattitude": "25.982600",
-                    "longitude": "79.459600",
-                    "serialNumber": 2,
-                    "station": "ORAI"
-                },
-                {
-                    "lattitude": "25.927000",
-                    "longitude": "79.298400",
-                    "serialNumber": 3,
-                    "station": "BHUA"
-                },
-                {
-                    "lattitude": "25.903500",
-                    "longitude": "79.230200",
-                    "serialNumber": 4,
-                    "station": "AIT"
-                },
-                {
-                    "lattitude": "25.994900",
-                    "longitude": "79.157500",
-                    "serialNumber": 5,
-                    "station": "KNH"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "01-Jan-2025",
             "validTo": "13-Mar-2027"
         }

@@ -10,8 +10,99 @@
         "trainServiceProfile": {
             "STA": "03:50",
             "STD": "23:00",
-            "classOfTravel": "2A,3A,SL,GEN",
-            "coachPositionAtSource": [],
+            "classOfTravel": "2A,3A,SL,GEN,PWD",
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "SLRD",
+                    "coachID": "SLRD",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 3
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 4
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S1",
+                    "positionFromEngine": 5
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S2",
+                    "positionFromEngine": 6
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S3",
+                    "positionFromEngine": 7
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S4",
+                    "positionFromEngine": 8
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S5",
+                    "positionFromEngine": 9
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S6",
+                    "positionFromEngine": 10
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S7",
+                    "positionFromEngine": 11
+                },
+                {
+                    "coachClass": "2A",
+                    "coachID": "A1",
+                    "positionFromEngine": 12
+                },
+                {
+                    "coachClass": "3A",
+                    "coachID": "B1",
+                    "positionFromEngine": 13
+                },
+                {
+                    "coachClass": "3A",
+                    "coachID": "B2",
+                    "positionFromEngine": 14
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 15
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 16
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 17
+                },
+                {
+                    "coachClass": "LPR",
+                    "coachID": "LPR",
+                    "positionFromEngine": 18
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "JBN",
@@ -21,33 +112,7 @@
             "destinationPF": "1",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {
-                "BNKM": 5,
-                "BTF": 23,
-                "CAC": 11,
-                "CRDA": 21,
-                "CTU": 18,
-                "DGZ": 20,
-                "FBG": 22,
-                "GEB": 4,
-                "JBN": 24,
-                "KDRA": 8,
-                "LLP": 17,
-                "NDLH": 2,
-                "NPV": 19,
-                "NRPM": 13,
-                "PGC": 3,
-                "PPV": 16,
-                "RBQ": 15,
-                "RGV": 14,
-                "SHC": 0,
-                "SHKY": 1,
-                "SOU": 7,
-                "SRGR": 12,
-                "SUDR": 6,
-                "TB": 9,
-                "VDNP": 10
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "FBG": "7",
                 "JBN": "8",
@@ -69,8 +134,6 @@
             "prsClassOfTravel": "2A,3A,SL",
             "prsTrainFlag": 1,
             "rakeReversalList": "",
-            "reservedTrainFlag": 1,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -89,26 +152,14 @@
             "trainTypeName": "MAIL EXPRESS",
             "trainTypeNameHindi": "मेल एक्सप्रेस",
             "travelTime": "04:50",
-            "utsClassOfTravel": "GEN",
+            "utsClassOfTravel": "GEN,PWD",
             "utsFareCategory": "E",
-            "utsFareCategoryDesc": "",
+            "utsFareCategoryDesc": "MAIL EXPRESS",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXGRP",
-                "MEXPAS",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "1",
-                    "arrivalCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "arrivalCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
-                    "depPWDCoachPosition": "1",
-                    "departureCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "departureCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
                     "distanceFromSource": 0,
                     "division": "SPJ",
                     "idTrainDef": 803799,
@@ -137,12 +188,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "1",
-                    "arrivalCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "arrivalCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
-                    "depPWDCoachPosition": "1",
-                    "departureCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "departureCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
                     "distanceFromSource": 27,
                     "division": "SPJ",
                     "idTrainDef": 803799,
@@ -171,12 +216,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "1",
-                    "arrivalCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "arrivalCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
-                    "depPWDCoachPosition": "1",
-                    "departureCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "departureCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
                     "distanceFromSource": 52,
                     "division": "SPJ",
                     "idTrainDef": 803799,
@@ -205,12 +244,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "1",
-                    "arrivalCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "arrivalCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
-                    "depPWDCoachPosition": "1",
-                    "departureCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "departureCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
                     "distanceFromSource": 63,
                     "division": "SPJ",
                     "idTrainDef": 803799,
@@ -239,12 +272,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "1",
-                    "arrivalCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "arrivalCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
-                    "depPWDCoachPosition": "1",
-                    "departureCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "departureCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
                     "distanceFromSource": 74,
                     "division": "SPJ",
                     "idTrainDef": 803799,
@@ -273,12 +300,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "1",
-                    "arrivalCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "arrivalCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
-                    "depPWDCoachPosition": "18",
-                    "departureCoachClass": "ENG-LPR-GEN-GEN-GEN-3A-3A-2A-SL-SL-SL-SL-SL-SL-SL-GEN-GEN-GEN-SLRD",
-                    "departureCoachPosition": "ENG-LPR-GEN-GEN-GEN-B2-B1-A1-S7-S6-S5-S4-S3-S2-S1-GEN-GEN-GEN-SLRD",
                     "distanceFromSource": 82,
                     "division": "SPJ",
                     "idTrainDef": 803799,
@@ -307,12 +328,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "18",
-                    "arrivalCoachClass": "ENG-LPR-GEN-GEN-GEN-3A-3A-2A-SL-SL-SL-SL-SL-SL-SL-GEN-GEN-GEN-SLRD",
-                    "arrivalCoachPosition": "ENG-LPR-GEN-GEN-GEN-B2-B1-A1-S7-S6-S5-S4-S3-S2-S1-GEN-GEN-GEN-SLRD",
-                    "depPWDCoachPosition": "18",
-                    "departureCoachClass": "ENG-LPR-GEN-GEN-GEN-3A-3A-2A-SL-SL-SL-SL-SL-SL-SL-GEN-GEN-GEN-SLRD",
-                    "departureCoachPosition": "ENG-LPR-GEN-GEN-GEN-B2-B1-A1-S7-S6-S5-S4-S3-S2-S1-GEN-GEN-GEN-SLRD",
                     "distanceFromSource": 94,
                     "division": "SPJ",
                     "idTrainDef": 803799,
@@ -337,16 +352,10 @@
                     "station": "NPV",
                     "stationName": "NARPATGANJ",
                     "stationNameHindi": "नरपतगंज",
-                    "zone": "ECR"
+                    "zone": ""
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "18",
-                    "arrivalCoachClass": "ENG-LPR-GEN-GEN-GEN-3A-3A-2A-SL-SL-SL-SL-SL-SL-SL-GEN-GEN-GEN-SLRD",
-                    "arrivalCoachPosition": "ENG-LPR-GEN-GEN-GEN-B2-B1-A1-S7-S6-S5-S4-S3-S2-S1-GEN-GEN-GEN-SLRD",
-                    "depPWDCoachPosition": "1",
-                    "departureCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "departureCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
                     "distanceFromSource": 111,
                     "division": "KIR",
                     "idTrainDef": 803799,
@@ -375,12 +384,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "1",
-                    "arrivalCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "arrivalCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
-                    "depPWDCoachPosition": "1",
-                    "departureCoachClass": "ENG-SLRD-GEN-GEN-GEN-SL-SL-SL-SL-SL-SL-SL-2A-3A-3A-GEN-GEN-GEN-LPR",
-                    "departureCoachPosition": "ENG-SLRD-GEN-GEN-GEN-S1-S2-S3-S4-S5-S6-S7-A1-B1-B2-GEN-GEN-GEN-LPR",
                     "distanceFromSource": 124,
                     "division": "KIR",
                     "idTrainDef": 803799,
@@ -408,158 +411,7 @@
                     "zone": "NFR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "25.874708",
-                    "longitude": "86.594453",
-                    "serialNumber": 1,
-                    "station": "SHC"
-                },
-                {
-                    "lattitude": "25.894824",
-                    "longitude": "86.594067",
-                    "serialNumber": 2,
-                    "station": "SHKY"
-                },
-                {
-                    "lattitude": "25.926863",
-                    "longitude": "86.593380",
-                    "serialNumber": 3,
-                    "station": "NDLH"
-                },
-                {
-                    "lattitude": "25.969774",
-                    "longitude": "86.598701",
-                    "serialNumber": 4,
-                    "station": "PGC"
-                },
-                {
-                    "lattitude": "26.019149",
-                    "longitude": "86.605396",
-                    "serialNumber": 5,
-                    "station": "GEB"
-                },
-                {
-                    "lattitude": "26.056012",
-                    "longitude": "86.610031",
-                    "serialNumber": 6,
-                    "station": "BNKM"
-                },
-                {
-                    "lattitude": "26.246430",
-                    "longitude": "86.641056",
-                    "serialNumber": 7,
-                    "station": "SUDR"
-                },
-                {
-                    "lattitude": "26.117527",
-                    "longitude": "86.602993",
-                    "serialNumber": 8,
-                    "station": "SOU"
-                },
-                {
-                    "lattitude": "26.166686",
-                    "longitude": "86.621532",
-                    "serialNumber": 9,
-                    "station": "KDRA"
-                },
-                {
-                    "lattitude": "26.218903",
-                    "longitude": "86.657753",
-                    "serialNumber": 10,
-                    "station": "TB"
-                },
-                {
-                    "lattitude": "26.258320",
-                    "longitude": "86.699810",
-                    "serialNumber": 11,
-                    "station": "VDNP"
-                },
-                {
-                    "lattitude": "26.273692",
-                    "longitude": "86.721619",
-                    "serialNumber": 12,
-                    "station": "CAC"
-                },
-                {
-                    "lattitude": "26.281564",
-                    "longitude": "86.729679",
-                    "serialNumber": 13,
-                    "station": "SRGR"
-                },
-                {
-                    "lattitude": "26.303110",
-                    "longitude": "86.783237",
-                    "serialNumber": 14,
-                    "station": "NRPM"
-                },
-                {
-                    "lattitude": "26.299725",
-                    "longitude": "86.837826",
-                    "serialNumber": 15,
-                    "station": "RGV"
-                },
-                {
-                    "lattitude": "26.304188",
-                    "longitude": "86.877651",
-                    "serialNumber": 16,
-                    "station": "RBQ"
-                },
-                {
-                    "lattitude": "26.313420",
-                    "longitude": "86.955585",
-                    "serialNumber": 17,
-                    "station": "PPV"
-                },
-                {
-                    "lattitude": "26.353421",
-                    "longitude": "87.044334",
-                    "serialNumber": 18,
-                    "station": "LLP"
-                },
-                {
-                    "lattitude": "26.352806",
-                    "longitude": "87.042561",
-                    "serialNumber": 19,
-                    "station": "CTU"
-                },
-                {
-                    "lattitude": "26.201269",
-                    "longitude": "86.042690",
-                    "serialNumber": 20,
-                    "station": "NPV"
-                },
-                {
-                    "lattitude": "26.319729",
-                    "longitude": "87.141666",
-                    "serialNumber": 21,
-                    "station": "DGZ"
-                },
-                {
-                    "lattitude": "26.316036",
-                    "longitude": "87.212048",
-                    "serialNumber": 22,
-                    "station": "CRDA"
-                },
-                {
-                    "lattitude": "26.298571",
-                    "longitude": "87.262473",
-                    "serialNumber": 23,
-                    "station": "FBG"
-                },
-                {
-                    "lattitude": "26.341884",
-                    "longitude": "87.237797",
-                    "serialNumber": 24,
-                    "station": "BTF"
-                },
-                {
-                    "lattitude": "26.402633",
-                    "longitude": "87.263632",
-                    "serialNumber": 25,
-                    "station": "JBN"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "18-May-2025",
             "validTo": "31-Dec-2099"
         }

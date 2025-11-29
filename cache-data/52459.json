@@ -10,8 +10,44 @@
         "trainServiceProfile": {
             "STA": "12:20",
             "STD": "07:00",
-            "classOfTravel": "EV",
-            "coachPositionAtSource": [],
+            "classOfTravel": "",
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "EV",
+                    "coachID": "EV1",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "EV",
+                    "coachID": "EV2",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "EV",
+                    "coachID": "EV3",
+                    "positionFromEngine": 3
+                },
+                {
+                    "coachClass": "EV",
+                    "coachID": "EV4",
+                    "positionFromEngine": 4
+                },
+                {
+                    "coachClass": "EV",
+                    "coachID": "EV5",
+                    "positionFromEngine": 5
+                },
+                {
+                    "coachClass": "EV",
+                    "coachID": "EV6",
+                    "positionFromEngine": 6
+                },
+                {
+                    "coachClass": "EV",
+                    "coachID": "EV7",
+                    "positionFromEngine": 7
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "SML",
@@ -21,26 +57,7 @@
             "destinationPF": "2",
             "futureTrainFlag": 0,
             "gauge": "NG",
-            "hashMapStationListWTT": {
-                "BOF": 7,
-                "DMP": 5,
-                "GMM": 2,
-                "JTO": 15,
-                "KANO": 11,
-                "KDZ": 10,
-                "KEJ": 12,
-                "KLK": 0,
-                "KMTI": 6,
-                "KOTI": 3,
-                "SGS": 13,
-                "SHZ": 16,
-                "SLR": 9,
-                "SML": 17,
-                "SOL": 8,
-                "SWO": 4,
-                "TSL": 1,
-                "TVI": 14
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "BOF": "2",
                 "DMP": "1",
@@ -48,18 +65,16 @@
                 "SML": "4",
                 "SOL": "3"
             },
-            "heritageTrainFlag": 0,
-            "heritageTrainSection": "",
+            "heritageTrainFlag": 1,
+            "heritageTrainSection": "KSR",
             "idTrainDef": 782601,
             "internationalTrainFlag": 0,
             "mainTrainNo": "",
             "owningRly": "NR",
             "pantryType": "",
-            "prsClassOfTravel": "EV",
+            "prsClassOfTravel": "",
             "prsTrainFlag": 1,
             "rakeReversalList": "",
-            "reservedTrainFlag": 1,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -83,21 +98,9 @@
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXPAS",
-                "PASGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "arrivalCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "departureCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
                     "distanceFromSource": 0,
                     "division": "UMB",
                     "idTrainDef": 782601,
@@ -126,12 +129,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "arrivalCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "departureCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
                     "distanceFromSource": 33,
                     "division": "UMB",
                     "idTrainDef": 782601,
@@ -160,12 +157,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "arrivalCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "departureCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
                     "distanceFromSource": 42,
                     "division": "UMB",
                     "idTrainDef": 782601,
@@ -194,12 +185,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "arrivalCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "departureCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
                     "distanceFromSource": 46,
                     "division": "UMB",
                     "idTrainDef": 782601,
@@ -228,12 +213,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "arrivalCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-EV-EV-EV-EV-EV-EV-EV",
-                    "departureCoachPosition": "ENG-EV1-EV2-EV3-EV4-EV5-EV6-EV7",
                     "distanceFromSource": 96,
                     "division": "UMB",
                     "idTrainDef": 782601,
@@ -261,116 +240,7 @@
                     "zone": "NR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "30.838000",
-                    "longitude": "76.932100",
-                    "serialNumber": 1,
-                    "station": "KLK"
-                },
-                {
-                    "lattitude": "30.844911",
-                    "longitude": "76.953907",
-                    "serialNumber": 2,
-                    "station": "TSL"
-                },
-                {
-                    "lattitude": "30.842258",
-                    "longitude": "76.971760",
-                    "serialNumber": 3,
-                    "station": "GMM"
-                },
-                {
-                    "lattitude": "30.852721",
-                    "longitude": "76.994419",
-                    "serialNumber": 4,
-                    "station": "KOTI"
-                },
-                {
-                    "lattitude": "30.894565",
-                    "longitude": "77.004719",
-                    "serialNumber": 5,
-                    "station": "SWO"
-                },
-                {
-                    "lattitude": "30.900071",
-                    "longitude": "77.023494",
-                    "serialNumber": 6,
-                    "station": "DMP"
-                },
-                {
-                    "lattitude": "30.889336",
-                    "longitude": "77.056131",
-                    "serialNumber": 7,
-                    "station": "KMTI"
-                },
-                {
-                    "lattitude": "30.890413",
-                    "longitude": "77.082530",
-                    "serialNumber": 8,
-                    "station": "BOF"
-                },
-                {
-                    "lattitude": "30.908337",
-                    "longitude": "77.097931",
-                    "serialNumber": 9,
-                    "station": "SOL"
-                },
-                {
-                    "lattitude": "30.934771",
-                    "longitude": "77.130976",
-                    "serialNumber": 10,
-                    "station": "SLR"
-                },
-                {
-                    "lattitude": "30.965834",
-                    "longitude": "77.107286",
-                    "serialNumber": 11,
-                    "station": "KDZ"
-                },
-                {
-                    "lattitude": "30.991663",
-                    "longitude": "77.117586",
-                    "serialNumber": 12,
-                    "station": "KANO"
-                },
-                {
-                    "lattitude": "31.021678",
-                    "longitude": "77.103424",
-                    "serialNumber": 13,
-                    "station": "KEJ"
-                },
-                {
-                    "lattitude": "31.038889",
-                    "longitude": "77.124367",
-                    "serialNumber": 14,
-                    "station": "SGS"
-                },
-                {
-                    "lattitude": "31.076020",
-                    "longitude": "77.139473",
-                    "serialNumber": 15,
-                    "station": "TVI"
-                },
-                {
-                    "lattitude": "31.101084",
-                    "longitude": "77.122393",
-                    "serialNumber": 16,
-                    "station": "JTO"
-                },
-                {
-                    "lattitude": "31.107919",
-                    "longitude": "77.138615",
-                    "serialNumber": 17,
-                    "station": "SHZ"
-                },
-                {
-                    "lattitude": "31.102334",
-                    "longitude": "77.159472",
-                    "serialNumber": 18,
-                    "station": "SML"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }
