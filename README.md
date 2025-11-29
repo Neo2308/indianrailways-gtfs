@@ -32,9 +32,9 @@ TODO: Add instructions to get API key
 
 **Station fixing report (from the code output):**
 * 708 total errors
-* 1 total warnings
+* 0 total warnings
 * 140 unique error stations
-* 1 unique warning stations
+* 0 unique warning stations
 
 **GTFS review report** (from [transport.data.gouv.fr](https://transport.data.gouv.fr/))
 https://transport.data.gouv.fr/validation/517479?token=3ffe848d-2f44-47a6-aa60-c375ac43639b

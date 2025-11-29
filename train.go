@@ -3,19 +3,21 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/Neo2308/indianrailways-gtfs/types"
-	"github.com/morikuni/go-geoplot"
 	"math"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/Neo2308/indianrailways-gtfs/types"
+	"github.com/morikuni/go-geoplot"
 )
 
 type TrainData struct {
 	ApiDataFetcher[TrainServiceProfileResponse]
 	trainNumber                 int
 	TrainServiceProfileResponse TrainServiceProfileResponse
+	dataErrors                  *DataErrors
 }
 
 type Station struct {
@@ -58,9 +60,10 @@ type vTrainServiceScheduleWTT struct {
 	Longitude    string `json:"longitude"`
 }
 
-func NewTrainData(trainNumber int) *TrainData {
+func NewTrainData(trainNumber int, dataErrors *DataErrors) *TrainData {
 	newObj := &TrainData{
 		trainNumber: trainNumber,
+		dataErrors:  dataErrors,
 	}
 	newObj.ApiDataFetcher = *newApiDataFetcher[TrainServiceProfileResponse](
 		&newObj.TrainServiceProfileResponse,
@@ -74,7 +77,7 @@ func NewTrainData(trainNumber int) *TrainData {
 func (t *TrainData) getStations() []Station {
 	_ = t.LoadData()
 	stations := []Station{}
-	//fmt.Println(t.TrainServiceProfileResponse)
+	// fmt.Println(t.TrainServiceProfileResponse)
 	for _, v := range t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceSchedulePTT {
 		newStation := Station{
 			Code: v.StationCode,
@@ -83,24 +86,24 @@ func (t *TrainData) getStations() []Station {
 			Lng:  v.Longitude,
 		}
 		// TODO: Remove after fixing station issues
-		fixStation(&newStation)
-		if stationHasProblems(&newStation) {
-			//fmt.Println("Station has problems: ", newStation)
+		fixStation(&newStation, t.dataErrors)
+		if stationHasProblems(&newStation, t.dataErrors) {
+			// fmt.Println("Station has problems: ", newStation)
 			stations = []Station{}
 			break
 		}
-		//fmt.Println(v)
+		// fmt.Println(v)
 		stations = append(stations, newStation)
 	}
 	return stations
 }
 
 func (t *TrainData) getRunningDays() string {
-	//_ = t.LoadData()
+	// _ = t.LoadData()
 	return t.TrainServiceProfileResponse.Pd.TrainServiceProfile.DaysOfRunFromSourceNumeric
 }
 
-//func (t *TrainData) getRoute() []*geoplot.LatLng {
+// func (t *TrainData) getRoute() []*geoplot.LatLng {
 //	_ = t.LoadData()
 //	route := []*geoplot.LatLng{}
 //	for _, v := range t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceSchedulePTT {
@@ -110,17 +113,17 @@ func (t *TrainData) getRunningDays() string {
 //		}
 //	}
 //	return route
-//}
+// }
 
 func (t *TrainData) getRoute() []string {
 	_ = t.LoadData()
 	route := []string{}
-	//if t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceScheduleWTT != nil {
+	// if t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceScheduleWTT != nil {
 	//	for _, v := range t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceScheduleWTT {
 	//		route = append(route, v.StationCode)
 	//	}
 	//	return route
-	//}
+	// }
 	for _, v := range t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceSchedulePTT {
 		route = append(route, v.StationCode)
 	}
@@ -139,7 +142,7 @@ func (t *TrainData) getTrainServiceProfileUncached() error {
 	url := "https://apigw.umangapp.in/CRISApi/ws1/ntes/s3/trainServiceProfile"
 	method := "POST"
 
-	//payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","startDate":"25-May-2025","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, train_number)
+	// payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","startDate":"25-May-2025","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, train_number)
 	payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","startDate":"%s","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, t.getTrainNumber(), time.Now().Format("02-Jan-2006"))
 	fmt.Println("Making request to fetch train service profile for train number:", t.getTrainNumber())
 	fmt.Println(payload)
@@ -193,7 +196,7 @@ func getLatLng(lat string, lng string) (*geoplot.LatLng, error) {
 }
 
 func (t *TrainData) toRoute() types.Route {
-	//_ = t.LoadData()
+	// _ = t.LoadData()
 	return types.Route{
 		RouteId:           t.getTrainNumber(),
 		AgencyId:          "1",
@@ -212,7 +215,7 @@ func (t *TrainData) toRoute() types.Route {
 }
 
 func (t *TrainData) toTrip() types.Trip {
-	//_ = t.LoadData()
+	// _ = t.LoadData()
 	if len(t.getRunningDays()) != 7 {
 		fmt.Printf("Invalid running days string: %s for train %s \n", t.getRunningDays(), t.getTrainNumber())
 	}
@@ -232,7 +235,7 @@ func (t *TrainData) toTrip() types.Trip {
 }
 
 func (t *TrainData) toStopTimes() []types.StopTime {
-	//_ = t.LoadData()
+	// _ = t.LoadData()
 	stopTimes := []types.StopTime{}
 	prevDistance := -1.0
 	for _, v := range t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceSchedulePTT {
@@ -240,11 +243,11 @@ func (t *TrainData) toStopTimes() []types.StopTime {
 		departureTime := convertSecondsToHHMMSS(v.PttDepartureTimeInSecond)
 		if v.PttArrivalTimeInSecond == 0 && v.PttDepartureTimeInSecond == 0 {
 			fmt.Printf("Skipping station %s for train %s as both arrival and departure time are 0\n", v.StationCode, t.getTrainNumber())
-			//continue
+			// continue
 		}
 		if v.PttArrivalTimeInSecond == 0 && v.PttDepartureTimeInSecond == 0 {
 			fmt.Printf("Skipping station %s for train %s as both arrival and departure time are 0\n", v.StationCode, t.getTrainNumber())
-			//continue
+			// continue
 		}
 		if v.PttArrivalTimeInSecond == 0 {
 			arrivalTime = departureTime

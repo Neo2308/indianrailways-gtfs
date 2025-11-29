@@ -21,17 +21,23 @@ type Server struct {
 	runningDays     map[string]struct{}
 	TrainListData   map[string]*TrainListData
 	LiveStationData map[string]*LiveStationData
+	dataErrors      *DataErrors
 }
 
 func NewServer() *Server {
 	trainData := map[int]*TrainData{}
 	stations := map[string]*Station{}
+	dataErrors, err := NewDataErrors()
+	if err != nil {
+		panic(err)
+	}
 	return &Server{
 		trainData:       trainData,
 		stations:        stations,
 		runningDays:     map[string]struct{}{},
 		TrainListData:   map[string]*TrainListData{},
 		LiveStationData: map[string]*LiveStationData{},
+		dataErrors:      dataErrors,
 	}
 }
 
@@ -58,7 +64,7 @@ func (s *Server) Setup() error {
 }
 
 func (s *Server) AddTrain(trainNumber int) error {
-	newTrain := NewTrainData(trainNumber)
+	newTrain := NewTrainData(trainNumber, s.dataErrors)
 	s.trainData[trainNumber] = newTrain
 	err := newTrain.populateData()
 	if err != nil {
@@ -69,12 +75,12 @@ func (s *Server) AddTrain(trainNumber int) error {
 	for _, station := range newTrainStations {
 		if _, ok := s.stations[station.Code]; !ok {
 			s.stations[station.Code] = &station
-			fixStation(&station)
+			fixStation(&station, s.dataErrors)
 			continue
 		}
 		if _, err := getLatLng(s.stations[station.Code].Lat, s.stations[station.Code].Lng); err != nil {
 			s.stations[station.Code] = &station
-			fixStation(&station)
+			fixStation(&station, s.dataErrors)
 		}
 	}
 	runningDays := newTrain.getRunningDays()
@@ -305,7 +311,7 @@ func (s *Server) populateAllTrains(w http.ResponseWriter, r *http.Request) {
 			_ = s.AddTrainList(prefixText)
 		}
 	}
-	fmt.Println(getStationFixingReport())
+	fmt.Println(s.dataErrors.getStationFixingReport())
 	err := geoplot.ServeMap(w, r, s.generateMap().getMap())
 	if err != nil {
 		fmt.Println(err)
@@ -316,7 +322,7 @@ func (s *Server) populateAllTrains(w http.ResponseWriter, r *http.Request) {
 func (s *Server) populateGTFSWriter(gw *GtfsWriter) {
 	for _, station := range s.stations {
 		// TODO: Remove after fixing station issues
-		if stationHasProblems(station) {
+		if stationHasProblems(station, s.dataErrors) {
 			fmt.Printf("Skipping station with problems: %+v\n", station)
 			continue
 		}

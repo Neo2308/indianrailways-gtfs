@@ -16,6 +16,7 @@ const (
 	OUTPUT
 	TEMP
 	CACHE
+	FIXES
 )
 
 const (
@@ -23,6 +24,7 @@ const (
 	OUTPUT_DATA_LOCATION = "gtfs"
 	TEMP_DATA_LOCATION   = "temp-data"
 	CACHE_DATA_LOCATION  = "cache-data"
+	FIXES_DATA_LOCATION  = "fixes-data"
 )
 
 var locations = map[Location]string{
@@ -30,6 +32,7 @@ var locations = map[Location]string{
 	OUTPUT: OUTPUT_DATA_LOCATION + "/%s",
 	TEMP:   TEMP_DATA_LOCATION + "/%s",
 	CACHE:  CACHE_DATA_LOCATION + "/%s",
+	FIXES:  FIXES_DATA_LOCATION + "/%s",
 }
 
 // Loads data from a file.
@@ -42,7 +45,7 @@ func loadFile(fileName string, loc Location) ([]byte, error) {
 		fmt.Println(err)
 		return []byte{}, err
 	}
-	//fmt.Println("Successfully opened file ", fileName)
+	// fmt.Println("Successfully opened file ", fileName)
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
 	fileBytes, _ := io.ReadAll(jsonFile)
