@@ -10,7 +10,7 @@
         "trainServiceProfile": {
             "STA": "09:17",
             "STD": "08:35",
-            "classOfTravel": "GEN",
+            "classOfTravel": "",
             "coachPositionAtSource": [],
             "daysOfRunFromSource": "Mon,Tue,Wed,Thu,Fri,Sat",
             "daysOfRunFromSourceNumeric": "1111110",
@@ -21,7 +21,18 @@
             "destinationPF": "2",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {},
+            "hashMapStationListWTT": {
+                "AGP": 4,
+                "BLH": 5,
+                "BNXR": 7,
+                "BP": 0,
+                "DDJ": 6,
+                "KDH": 2,
+                "KGK": 8,
+                "SDAH": 9,
+                "SEP": 3,
+                "TGH": 1
+            },
             "hashMapStationMultiList": {
                 "AGP": "2",
                 "BLH": "3",
@@ -41,8 +52,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -61,25 +70,14 @@
             "trainTypeName": "SUBURBAN",
             "trainTypeNameHindi": "उपनगरीय",
             "travelTime": "00:42",
-            "utsClassOfTravel": "GEN",
+            "utsClassOfTravel": "",
             "utsFareCategory": "O",
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "EMU",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 0,
                     "division": "SDAH",
                     "idTrainDef": 784935,
@@ -108,12 +106,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 7,
                     "division": "SDAH",
                     "idTrainDef": 784935,
@@ -142,12 +134,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 9,
                     "division": "SDAH",
                     "idTrainDef": 784935,
@@ -176,12 +162,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 11,
                     "division": "SDAH",
                     "idTrainDef": 784935,
@@ -210,12 +190,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 16,
                     "division": "SDAH",
                     "idTrainDef": 784935,
@@ -244,12 +218,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 19,
                     "division": "SDAH",
                     "idTrainDef": 784935,
@@ -278,12 +246,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 25,
                     "division": "SDAH",
                     "idTrainDef": 784935,
@@ -308,10 +270,101 @@
                     "station": "SDAH",
                     "stationName": "SEALDAH",
                     "stationNameHindi": "SEALDAH",
-                    "zone": "ER"
+                    "zone": ""
                 }
             ],
-            "vTrainServiceScheduleWTT": null,
+            "vTrainServiceScheduleWTT": [
+                {
+                    "WTT_STA": "",
+                    "WTT_STD": "08:35",
+                    "kms": 0,
+                    "lattitude": "22.760700",
+                    "longitude": "88.371100",
+                    "serialNumber": 1,
+                    "station": "BP"
+                },
+                {
+                    "WTT_STA": "08:39",
+                    "WTT_STD": "08:39",
+                    "kms": 2,
+                    "lattitude": "22.741900",
+                    "longitude": "88.374300",
+                    "serialNumber": 2,
+                    "station": "TGH"
+                },
+                {
+                    "WTT_STA": "08:41",
+                    "WTT_STD": "08:41",
+                    "kms": 4,
+                    "lattitude": "22.725300",
+                    "longitude": "88.377400",
+                    "serialNumber": 3,
+                    "station": "KDH"
+                },
+                {
+                    "WTT_STA": "08:46",
+                    "WTT_STD": "08:47",
+                    "kms": 7,
+                    "lattitude": "22.698900",
+                    "longitude": "88.382200",
+                    "serialNumber": 4,
+                    "station": "SEP"
+                },
+                {
+                    "WTT_STA": "08:50",
+                    "WTT_STD": "08:51",
+                    "kms": 9,
+                    "lattitude": "22.682900",
+                    "longitude": "88.385100",
+                    "serialNumber": 5,
+                    "station": "AGP"
+                },
+                {
+                    "WTT_STA": "08:54",
+                    "WTT_STD": "08:55",
+                    "kms": 11,
+                    "lattitude": "22.661600",
+                    "longitude": "88.389200",
+                    "serialNumber": 6,
+                    "station": "BLH"
+                },
+                {
+                    "WTT_STA": "09:00",
+                    "WTT_STD": "09:01",
+                    "kms": 16,
+                    "lattitude": "22.621600",
+                    "longitude": "88.392700",
+                    "serialNumber": 7,
+                    "station": "DDJ"
+                },
+                {
+                    "WTT_STA": "09:04",
+                    "WTT_STD": "09:05",
+                    "kms": 19,
+                    "lattitude": "22.592000",
+                    "longitude": "88.390600",
+                    "serialNumber": 8,
+                    "station": "BNXR"
+                },
+                {
+                    "WTT_STA": "09:07",
+                    "WTT_STD": "09:07",
+                    "kms": 20,
+                    "lattitude": "22.572963",
+                    "longitude": "88.385439",
+                    "serialNumber": 9,
+                    "station": "KGK"
+                },
+                {
+                    "WTT_STA": "09:17",
+                    "WTT_STD": "",
+                    "kms": 25,
+                    "lattitude": "22.567098",
+                    "longitude": "88.375053",
+                    "serialNumber": 10,
+                    "station": "SDAH"
+                }
+            ],
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

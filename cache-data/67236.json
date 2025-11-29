@@ -10,8 +10,49 @@
         "trainServiceProfile": {
             "STA": "16:10",
             "STD": "15:15",
-            "classOfTravel": "GEN",
-            "coachPositionAtSource": [],
+            "classOfTravel": "",
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 3
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 4
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 5
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 6
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 7
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 8
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "GNT",
@@ -21,14 +62,7 @@
             "destinationPF": "3",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {
-                "AKU": 1,
-                "GNT": 5,
-                "MIX": 4,
-                "SJL": 2,
-                "TEL": 0,
-                "VJA": 3
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "GNT": "3",
                 "SJL": "1",
@@ -45,8 +79,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -65,27 +97,14 @@
             "trainTypeName": "MEMU",
             "trainTypeNameHindi": "मेमू",
             "travelTime": "00:55",
-            "utsClassOfTravel": "GEN",
+            "utsClassOfTravel": "",
             "utsFareCategory": "O",
-            "utsFareCategoryDesc": "",
+            "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEMU",
-                "MEXPAS",
-                "PASGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 0,
                     "division": "BZA",
                     "idTrainDef": 783356,
@@ -114,12 +133,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 8,
                     "division": "GNT",
                     "idTrainDef": 783356,
@@ -148,12 +161,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 14,
                     "division": "GNT",
                     "idTrainDef": 783356,
@@ -182,12 +189,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 25,
                     "division": "GNT",
                     "idTrainDef": 783356,
@@ -215,44 +216,7 @@
                     "zone": "SCR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "16.242100",
-                    "longitude": "80.640100",
-                    "serialNumber": 1,
-                    "station": "TEL"
-                },
-                {
-                    "lattitude": "",
-                    "longitude": "",
-                    "serialNumber": 2,
-                    "station": "AKU"
-                },
-                {
-                    "lattitude": "16.246200",
-                    "longitude": "80.570200",
-                    "serialNumber": 3,
-                    "station": "SJL"
-                },
-                {
-                    "lattitude": "16.237600",
-                    "longitude": "80.520100",
-                    "serialNumber": 4,
-                    "station": "VJA"
-                },
-                {
-                    "lattitude": "16.299720",
-                    "longitude": "80.457780",
-                    "serialNumber": 5,
-                    "station": "MIX"
-                },
-                {
-                    "lattitude": "16.300500",
-                    "longitude": "80.441700",
-                    "serialNumber": 6,
-                    "station": "GNT"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

@@ -10,8 +10,79 @@
         "trainServiceProfile": {
             "STA": "17:45",
             "STD": "16:30",
-            "classOfTravel": "",
-            "coachPositionAtSource": [],
+            "classOfTravel": "1A,2A,3A,SL,GEN",
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "OCV",
+                    "coachID": "OCV",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "GEN",
+                    "coachID": "GEN",
+                    "positionFromEngine": 3
+                },
+                {
+                    "coachClass": "3A",
+                    "coachID": "B1",
+                    "positionFromEngine": 4
+                },
+                {
+                    "coachClass": "1A+2A",
+                    "coachID": "HA1",
+                    "positionFromEngine": 5
+                },
+                {
+                    "coachClass": "2A",
+                    "coachID": "A1",
+                    "positionFromEngine": 6
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S7",
+                    "positionFromEngine": 7
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S6",
+                    "positionFromEngine": 8
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S5",
+                    "positionFromEngine": 9
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S4",
+                    "positionFromEngine": 10
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S3",
+                    "positionFromEngine": 11
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S2",
+                    "positionFromEngine": 12
+                },
+                {
+                    "coachClass": "SL",
+                    "coachID": "S1",
+                    "positionFromEngine": 13
+                },
+                {
+                    "coachClass": "LPR",
+                    "coachID": "LPR",
+                    "positionFromEngine": 14
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "KAWR",
@@ -21,14 +92,7 @@
             "destinationPF": "2",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {
-                "AT": 4,
-                "BLLI": 1,
-                "CNO": 2,
-                "KAWR": 5,
-                "LOL": 3,
-                "MAO": 0
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "CNO": "1",
                 "KAWR": "2",
@@ -36,16 +100,14 @@
             },
             "heritageTrainFlag": 0,
             "heritageTrainSection": "",
-            "idTrainDef": 804738,
+            "idTrainDef": 814153,
             "internationalTrainFlag": 0,
             "mainTrainNo": "",
             "owningRly": "SWR",
             "pantryType": "",
-            "prsClassOfTravel": "",
+            "prsClassOfTravel": "1A,2A,3A,SL",
             "prsTrainFlag": 1,
             "rakeReversalList": "",
-            "reservedTrainFlag": 1,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -57,35 +119,24 @@
             "trainName": "MAO KAWR SPL                                  ",
             "trainNameHindi": "मडगाव कारवार स्पेशल",
             "trainNo": "01596",
-            "trainSubType": "TOD",
-            "trainSubTypeName": "TRAIN ON DEMAND",
+            "trainSubType": "PUJA",
+            "trainSubTypeName": "POOJA SPECIAL",
             "trainSubTypeNameHindi": "",
             "trainType": "TOD",
             "trainTypeName": "TRAIN ON DEMAND",
             "trainTypeNameHindi": "मांग पर ट्रेन",
             "travelTime": "01:15",
-            "utsClassOfTravel": "",
-            "utsFareCategory": null,
-            "utsFareCategoryDesc": null,
+            "utsClassOfTravel": "GEN",
+            "utsFareCategory": "",
+            "utsFareCategoryDesc": "",
             "utsMstAllowed": 0,
             "utsTrainFlag": 0,
-            "vTrainGroup": [
-                "SHOW_IN_NTES",
-                "TODGRP",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-OCV-GEN-GEN-3A-1A+2A-2A-SL-SL-SL-SL-SL-SL-SL-LPR",
-                    "departureCoachPosition": "ENG-OCV-GEN-GEN-B1-HA1-A1-S7-S6-S5-S4-S3-S2-S1-LPR",
                     "distanceFromSource": 0,
                     "division": "KR",
-                    "idTrainDef": 804738,
+                    "idTrainDef": 814153,
                     "lattitude": "15.267791",
                     "longitude": "73.970604",
                     "pfNumber": "4",
@@ -101,7 +152,7 @@
                     "pttStoppage": 1,
                     "reversalNumber": 0,
                     "samePttStopSeq": 1,
-                    "sameStationRepeatSeq": 1,
+                    "sameStationRepeatSeq": 0,
                     "serialNumber": 1,
                     "srNoWTT": 1,
                     "station": "MAO",
@@ -111,31 +162,25 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-OCV-GEN-GEN-3A-1A+2A-2A-SL-SL-SL-SL-SL-SL-SL-LPR",
-                    "arrivalCoachPosition": "ENG-OCV-GEN-GEN-B1-HA1-A1-S7-S6-S5-S4-S3-S2-S1-LPR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-OCV-GEN-GEN-3A-1A+2A-2A-SL-SL-SL-SL-SL-SL-SL-LPR",
-                    "departureCoachPosition": "ENG-OCV-GEN-GEN-B1-HA1-A1-S7-S6-S5-S4-S3-S2-S1-LPR",
                     "distanceFromSource": 33,
                     "division": "KR",
-                    "idTrainDef": 804738,
+                    "idTrainDef": 814153,
                     "lattitude": "15.006806",
                     "longitude": "74.039354",
                     "pfNumber": "1",
                     "pttArrivalDayCount": 1,
-                    "pttArrivalTimeHHMM": "17:00",
-                    "pttArrivalTimeInSecond": 61200,
+                    "pttArrivalTimeHHMM": "16:58",
+                    "pttArrivalTimeInSecond": 61080,
                     "pttDaysOfArrival": "DAILY",
                     "pttDaysOfDeparture": "DAILY",
                     "pttDepartureDayCount": 1,
-                    "pttDepartureTimeHHMM": "17:02",
-                    "pttDepartureTimeInSecond": 61320,
+                    "pttDepartureTimeHHMM": "17:00",
+                    "pttDepartureTimeInSecond": 61200,
                     "pttStopTime": 120,
                     "pttStoppage": 1,
                     "reversalNumber": 0,
                     "samePttStopSeq": 1,
-                    "sameStationRepeatSeq": 1,
+                    "sameStationRepeatSeq": 0,
                     "serialNumber": 2,
                     "srNoWTT": 3,
                     "station": "CNO",
@@ -145,15 +190,9 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-OCV-GEN-GEN-3A-1A+2A-2A-SL-SL-SL-SL-SL-SL-SL-LPR",
-                    "arrivalCoachPosition": "ENG-OCV-GEN-GEN-B1-HA1-A1-S7-S6-S5-S4-S3-S2-S1-LPR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 59,
                     "division": "KR",
-                    "idTrainDef": 804738,
+                    "idTrainDef": 814153,
                     "lattitude": "14.820897",
                     "longitude": "74.182649",
                     "pfNumber": "2",
@@ -169,7 +208,7 @@
                     "pttStoppage": 1,
                     "reversalNumber": 0,
                     "samePttStopSeq": 1,
-                    "sameStationRepeatSeq": 1,
+                    "sameStationRepeatSeq": 0,
                     "serialNumber": 3,
                     "srNoWTT": 6,
                     "station": "KAWR",
@@ -178,46 +217,9 @@
                     "zone": "KR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "15.267791",
-                    "longitude": "73.970604",
-                    "serialNumber": 1,
-                    "station": "MAO"
-                },
-                {
-                    "lattitude": "15.151796",
-                    "longitude": "74.021046",
-                    "serialNumber": 2,
-                    "station": "BLLI"
-                },
-                {
-                    "lattitude": "15.006806",
-                    "longitude": "74.039354",
-                    "serialNumber": 3,
-                    "station": "CNO"
-                },
-                {
-                    "lattitude": "14.939586",
-                    "longitude": "74.088109",
-                    "serialNumber": 4,
-                    "station": "LOL"
-                },
-                {
-                    "lattitude": "14.876276",
-                    "longitude": "74.147673",
-                    "serialNumber": 5,
-                    "station": "AT"
-                },
-                {
-                    "lattitude": "14.820897",
-                    "longitude": "74.182649",
-                    "serialNumber": 6,
-                    "station": "KAWR"
-                }
-            ],
-            "validFrom": "15-Jun-2025",
-            "validTo": "31-Dec-2099"
+            "vTrainServiceScheduleWTT": null,
+            "validFrom": "22-Oct-2025",
+            "validTo": "30-Nov-2099"
         }
     },
     "rc": "200",

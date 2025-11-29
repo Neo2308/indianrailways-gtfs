@@ -10,8 +10,14 @@
         "trainServiceProfile": {
             "STA": "11:30",
             "STD": "09:00",
-            "classOfTravel": "FC",
-            "coachPositionAtSource": [],
+            "classOfTravel": "",
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "FC",
+                    "coachID": "F1",
+                    "positionFromEngine": 1
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "KGN",
@@ -42,11 +48,9 @@
             "mainTrainNo": "",
             "owningRly": "NFR",
             "pantryType": "",
-            "prsClassOfTravel": "FC",
+            "prsClassOfTravel": "",
             "prsTrainFlag": 1,
             "rakeReversalList": "",
-            "reservedTrainFlag": 1,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -66,24 +70,13 @@
             "trainTypeNameHindi": "मांग पर ट्रेन",
             "travelTime": "02:30",
             "utsClassOfTravel": "",
-            "utsFareCategory": null,
-            "utsFareCategoryDesc": null,
+            "utsFareCategory": "",
+            "utsFareCategoryDesc": "",
             "utsMstAllowed": 0,
             "utsTrainFlag": 0,
-            "vTrainGroup": [
-                "SHOW_IN_NTES",
-                "TODGRP",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-FC",
-                    "departureCoachPosition": "ENG-F1",
                     "distanceFromSource": 0,
                     "division": "KIR",
                     "idTrainDef": 789551,
@@ -112,12 +105,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-FC",
-                    "arrivalCoachPosition": "ENG-F1",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-FC",
-                    "departureCoachPosition": "ENG-F1",
                     "distanceFromSource": 6,
                     "division": "KIR",
                     "idTrainDef": 789551,
@@ -146,12 +133,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-FC",
-                    "arrivalCoachPosition": "ENG-F1",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-FC",
-                    "departureCoachPosition": "ENG-F1",
                     "distanceFromSource": 15,
                     "division": "KIR",
                     "idTrainDef": 789551,
@@ -180,12 +161,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-FC",
-                    "arrivalCoachPosition": "ENG-F1",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-FC",
-                    "departureCoachPosition": "ENG-F1",
                     "distanceFromSource": 23,
                     "division": "KIR",
                     "idTrainDef": 789551,
@@ -214,12 +189,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-FC",
-                    "arrivalCoachPosition": "ENG-F1",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 31,
                     "division": "KIR",
                     "idTrainDef": 789551,
@@ -249,30 +218,45 @@
             ],
             "vTrainServiceScheduleWTT": [
                 {
+                    "WTT_STA": "",
+                    "WTT_STD": "09:00",
+                    "kms": 0,
                     "lattitude": "27.037741",
                     "longitude": "88.262916",
                     "serialNumber": 1,
                     "station": "DJ"
                 },
                 {
+                    "WTT_STA": "09:30",
+                    "WTT_STD": "09:35",
+                    "kms": 6,
                     "lattitude": "27.008323",
                     "longitude": "88.253903",
                     "serialNumber": 2,
                     "station": "GHUM"
                 },
                 {
+                    "WTT_STA": "10:15",
+                    "WTT_STD": "10:16",
+                    "kms": 15,
                     "lattitude": "26.960787",
                     "longitude": "88.273773",
                     "serialNumber": 3,
                     "station": "SAD"
                 },
                 {
+                    "WTT_STA": "10:54",
+                    "WTT_STD": "10:55",
+                    "kms": 23,
                     "lattitude": "26.922223",
                     "longitude": "88.295231",
                     "serialNumber": 4,
                     "station": "TUNG"
                 },
                 {
+                    "WTT_STA": "11:30",
+                    "WTT_STD": "",
+                    "kms": 31,
                     "lattitude": "26.877521",
                     "longitude": "88.277121",
                     "serialNumber": 5,

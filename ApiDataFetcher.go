@@ -28,21 +28,21 @@ func newApiDataFetcher[T any](dataLocation *T, urlType string, cacheFileName str
 }
 
 func (a *ApiDataFetcher[T]) LoadData() error {
-	//file_name := fmt.Sprintf("%s.json", fmt.Sprintf("%d", t.trainNumber))
-	//file_name := '{}.json'.format(train_number)
+	// file_name := fmt.Sprintf("%s.json", fmt.Sprintf("%d", t.trainNumber))
+	// file_name := '{}.json'.format(train_number)
 	// Load json from cache if available
 	data, _ := loadFile(a.CacheFileName, CACHE)
 	return json.Unmarshal(data, a.DataLocation)
 }
 
 func (a *ApiDataFetcher[T]) populateData() error {
-	//file_name := fmt.Sprintf("searches/%s.json", searchString)
-	//file_name := '{}.json'.format(train_number)
+	// file_name := fmt.Sprintf("searches/%s.json", searchString)
+	// file_name := '{}.json'.format(train_number)
 	// Load json from cache if available
 	data, err := loadFile(a.CacheFileName, CACHE)
 	if err == nil {
-		//fmt.Printf("Cache hit for %s, loading from cache...\n", a.CacheFileName)
-		//fmt.Println(string(data))
+		// fmt.Printf("Cache hit for %s, loading from cache...\n", a.CacheFileName)
+		// fmt.Println(string(data))
 		return json.Unmarshal(data, &struct{}{})
 	}
 	if !os.IsNotExist(err) {
@@ -83,7 +83,7 @@ func (a *ApiDataFetcher[T]) throttleRequests() {
 		return
 	}
 	fmt.Printf("Checking if request for %s should be throttled at %v \n", a.UrlType, time.Now())
-	//fmt.Printf("Checking this %v %v %v\n", a.UrlType, time.Now(), throttleTriggerTime[a.UrlType], throttleTriggerTime[a.UrlType].Add(throttlingInterval))
+	// fmt.Printf("Checking this %v %v %v\n", a.UrlType, time.Now(), throttleTriggerTime[a.UrlType], throttleTriggerTime[a.UrlType].Add(throttlingInterval))
 	if !time.Now().After(throttleTriggerTime[a.UrlType].Add(throttlingInterval)) {
 		sleepDuration := throttleTriggerTime[a.UrlType].Add(throttlingInterval).Sub(time.Now())
 		fmt.Printf("Throttling request for %s, sleeping for %v seconds...\n", a.UrlType, sleepDuration.Seconds())

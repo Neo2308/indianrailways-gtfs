@@ -10,8 +10,54 @@
         "trainServiceProfile": {
             "STA": "09:30",
             "STD": "08:35",
-            "classOfTravel": "2S",
-            "coachPositionAtSource": [],
+            "classOfTravel": "2S,GEN",
+            "coachPositionAtSource": [
+                {
+                    "coachClass": "SLR",
+                    "coachID": "SLR",
+                    "positionFromEngine": 1
+                },
+                {
+                    "coachClass": "2S",
+                    "coachID": "D01",
+                    "positionFromEngine": 2
+                },
+                {
+                    "coachClass": "2S",
+                    "coachID": "D02",
+                    "positionFromEngine": 3
+                },
+                {
+                    "coachClass": "2S",
+                    "coachID": "D03",
+                    "positionFromEngine": 4
+                },
+                {
+                    "coachClass": "2S",
+                    "coachID": "D04",
+                    "positionFromEngine": 5
+                },
+                {
+                    "coachClass": "2S",
+                    "coachID": "D05",
+                    "positionFromEngine": 6
+                },
+                {
+                    "coachClass": "2S",
+                    "coachID": "D06",
+                    "positionFromEngine": 7
+                },
+                {
+                    "coachClass": "2S",
+                    "coachID": "D07",
+                    "positionFromEngine": 8
+                },
+                {
+                    "coachClass": "SLR",
+                    "coachID": "SLR",
+                    "positionFromEngine": 9
+                }
+            ],
             "daysOfRunFromSource": "DAILY",
             "daysOfRunFromSourceNumeric": "1111111",
             "destination": "RTM",
@@ -21,15 +67,7 @@
             "destinationPF": "4",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {
-                "BOD": 4,
-                "BRNA": 1,
-                "KUH": 2,
-                "NAD": 0,
-                "RNH": 3,
-                "RTM": 6,
-                "RTME": 5
-            },
+            "hashMapStationListWTT": {},
             "hashMapStationMultiList": {
                 "BOD": "4",
                 "BRNA": "1",
@@ -45,11 +83,9 @@
             "mainTrainNo": "",
             "owningRly": "WR",
             "pantryType": "",
-            "prsClassOfTravel": "2S",
+            "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -68,26 +104,14 @@
             "trainTypeName": "PASSENGER",
             "trainTypeNameHindi": "पैसेंजर",
             "travelTime": "00:55",
-            "utsClassOfTravel": "",
+            "utsClassOfTravel": "2S,GEN",
             "utsFareCategory": "O",
             "utsFareCategoryDesc": "ORDINARY",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXPAS",
-                "PASGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "arrivalCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "departureCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
                     "distanceFromSource": 0,
                     "division": "RTM",
                     "idTrainDef": 787162,
@@ -116,12 +140,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "arrivalCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "departureCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
                     "distanceFromSource": 8,
                     "division": "RTM",
                     "idTrainDef": 787162,
@@ -150,12 +168,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "arrivalCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "departureCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
                     "distanceFromSource": 14,
                     "division": "RTM",
                     "idTrainDef": 787162,
@@ -184,12 +196,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "arrivalCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "departureCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
                     "distanceFromSource": 24,
                     "division": "RTM",
                     "idTrainDef": 787162,
@@ -218,12 +224,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "arrivalCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "departureCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
                     "distanceFromSource": 32,
                     "division": "RTM",
                     "idTrainDef": 787162,
@@ -252,12 +252,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "arrivalCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "ENG-SLR-2S-2S-2S-2S-2S-2S-2S-SLR",
-                    "departureCoachPosition": "ENG-SLR-D01-D02-D03-D04-D05-D06-D07-SLR",
                     "distanceFromSource": 41,
                     "division": "RTM",
                     "idTrainDef": 787162,
@@ -285,50 +279,7 @@
                     "zone": "WR"
                 }
             ],
-            "vTrainServiceScheduleWTT": [
-                {
-                    "lattitude": "23.456100",
-                    "longitude": "75.412700",
-                    "serialNumber": 1,
-                    "station": "NAD"
-                },
-                {
-                    "lattitude": "23.465700",
-                    "longitude": "75.334200",
-                    "serialNumber": 2,
-                    "station": "BRNA"
-                },
-                {
-                    "lattitude": "23.442800",
-                    "longitude": "75.286500",
-                    "serialNumber": 3,
-                    "station": "KUH"
-                },
-                {
-                    "lattitude": "23.410000",
-                    "longitude": "75.179900",
-                    "serialNumber": 4,
-                    "station": "RNH"
-                },
-                {
-                    "lattitude": "23.398400",
-                    "longitude": "75.124300",
-                    "serialNumber": 5,
-                    "station": "BOD"
-                },
-                {
-                    "lattitude": "23.359750",
-                    "longitude": "75.066979",
-                    "serialNumber": 6,
-                    "station": "RTME"
-                },
-                {
-                    "lattitude": "23.340600",
-                    "longitude": "75.051100",
-                    "serialNumber": 7,
-                    "station": "RTM"
-                }
-            ],
+            "vTrainServiceScheduleWTT": null,
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

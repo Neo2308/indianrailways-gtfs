@@ -10,13 +10,8 @@
         "trainServiceProfile": {
             "STA": "11:45",
             "STD": "10:05",
-            "classOfTravel": "CC,2S",
+            "classOfTravel": "",
             "coachPositionAtSource": [
-                {
-                    "coachClass": "ENG",
-                    "coachID": "ENG",
-                    "positionFromEngine": 0
-                },
                 {
                     "coachClass": "CC",
                     "coachID": "C1",
@@ -57,7 +52,21 @@
             "destinationPF": "3",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {},
+            "hashMapStationListWTT": {
+                "ALJ": 4,
+                "GOT": 10,
+                "GWS": 2,
+                "JLQ": 7,
+                "KGF": 11,
+                "KPV": 3,
+                "MB": 12,
+                "PAQ": 5,
+                "PLS": 8,
+                "PRM": 1,
+                "RHN": 6,
+                "RMR": 0,
+                "SEW": 9
+            },
             "hashMapStationMultiList": {
                 "KPV": "1",
                 "MB": "2",
@@ -70,11 +79,9 @@
             "mainTrainNo": "15036",
             "owningRly": "NER",
             "pantryType": "",
-            "prsClassOfTravel": "CC,2S",
+            "prsClassOfTravel": "",
             "prsTrainFlag": 1,
             "rakeReversalList": "",
-            "reservedTrainFlag": 1,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 2,
             "slipTrainNo": "25036",
             "slipType": "A",
@@ -95,24 +102,12 @@
             "travelTime": "01:40",
             "utsClassOfTravel": "",
             "utsFareCategory": "E",
-            "utsFareCategoryDesc": "",
+            "utsFareCategoryDesc": "MAIL EXPRESS",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXGRP",
-                "MEXPAS",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "",
-                    "arrivalCoachPosition": "",
-                    "depPWDCoachPosition": "6",
-                    "departureCoachClass": "ENG-CC-2S-2S-2S-2S-SLRD",
-                    "departureCoachPosition": "ENG-C1-D4-D3-D2-D1-GRD",
                     "distanceFromSource": 0,
                     "division": "IZN",
                     "idTrainDef": 786637,
@@ -141,12 +136,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "6",
-                    "arrivalCoachClass": "ENG-CC-2S-2S-2S-2S-SLRD",
-                    "arrivalCoachPosition": "ENG-C1-D4-D3-D2-D1-GRD",
-                    "depPWDCoachPosition": "6",
-                    "departureCoachClass": "ENG-CC-2S-2S-2S-2S-SLRD",
-                    "departureCoachPosition": "ENG-C1-D4-D3-D2-D1-GRD",
                     "distanceFromSource": 27,
                     "division": "IZN",
                     "idTrainDef": 786637,
@@ -175,12 +164,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "6",
-                    "arrivalCoachClass": "ENG-CC-2S-2S-2S-2S-SLRD",
-                    "arrivalCoachPosition": "ENG-C1-D4-D3-D2-D1-GRD",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "",
-                    "departureCoachPosition": "",
                     "distanceFromSource": 76,
                     "division": "MB",
                     "idTrainDef": 786637,
@@ -208,7 +191,125 @@
                     "zone": "NR"
                 }
             ],
-            "vTrainServiceScheduleWTT": null,
+            "vTrainServiceScheduleWTT": [
+                {
+                    "WTT_STA": "",
+                    "WTT_STD": "10:05",
+                    "kms": 0,
+                    "lattitude": "29.389803",
+                    "longitude": "79.121819",
+                    "serialNumber": 1,
+                    "station": "RMR"
+                },
+                {
+                    "WTT_STA": "10:15",
+                    "WTT_STD": "10:15",
+                    "kms": 9,
+                    "lattitude": "29.327500",
+                    "longitude": "79.045900",
+                    "serialNumber": 2,
+                    "station": "PRM"
+                },
+                {
+                    "WTT_STA": "10:25",
+                    "WTT_STD": "10:25",
+                    "kms": 15,
+                    "lattitude": "29.298300",
+                    "longitude": "79.009500",
+                    "serialNumber": 3,
+                    "station": "GWS"
+                },
+                {
+                    "WTT_STA": "10:35",
+                    "WTT_STD": "10:43",
+                    "kms": 27,
+                    "lattitude": "29.205068",
+                    "longitude": "78.960800",
+                    "serialNumber": 4,
+                    "station": "KPV"
+                },
+                {
+                    "WTT_STA": "10:52",
+                    "WTT_STD": "10:52",
+                    "kms": 39,
+                    "lattitude": "",
+                    "longitude": "",
+                    "serialNumber": 5,
+                    "station": "ALJ"
+                },
+                {
+                    "WTT_STA": "10:55",
+                    "WTT_STD": "10:55",
+                    "kms": 44,
+                    "lattitude": "29.086300",
+                    "longitude": "78.908100",
+                    "serialNumber": 6,
+                    "station": "PAQ"
+                },
+                {
+                    "WTT_STA": "10:58",
+                    "WTT_STD": "10:58",
+                    "kms": 48,
+                    "lattitude": "29.047000",
+                    "longitude": "78.888100",
+                    "serialNumber": 7,
+                    "station": "RHN"
+                },
+                {
+                    "WTT_STA": "11:01",
+                    "WTT_STD": "11:01",
+                    "kms": 53,
+                    "lattitude": "29.012300",
+                    "longitude": "78.870300",
+                    "serialNumber": 8,
+                    "station": "JLQ"
+                },
+                {
+                    "WTT_STA": "11:14",
+                    "WTT_STD": "11:14",
+                    "kms": 58,
+                    "lattitude": "28.952000",
+                    "longitude": "78.835200",
+                    "serialNumber": 9,
+                    "station": "PLS"
+                },
+                {
+                    "WTT_STA": "11:21",
+                    "WTT_STD": "11:21",
+                    "kms": 64,
+                    "lattitude": "28.918100",
+                    "longitude": "78.822200",
+                    "serialNumber": 10,
+                    "station": "SEW"
+                },
+                {
+                    "WTT_STA": "11:25",
+                    "WTT_STD": "11:25",
+                    "kms": 70,
+                    "lattitude": "28.871400",
+                    "longitude": "78.823400",
+                    "serialNumber": 11,
+                    "station": "GOT"
+                },
+                {
+                    "WTT_STA": "11:32",
+                    "WTT_STD": "11:32",
+                    "kms": 73,
+                    "lattitude": "28.825700",
+                    "longitude": "78.796300",
+                    "serialNumber": 12,
+                    "station": "KGF"
+                },
+                {
+                    "WTT_STA": "11:45",
+                    "WTT_STD": "",
+                    "kms": 76,
+                    "lattitude": "28.831400",
+                    "longitude": "78.765600",
+                    "serialNumber": 13,
+                    "station": "MB"
+                }
+            ],
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }

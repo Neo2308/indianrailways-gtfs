@@ -10,7 +10,7 @@
         "trainServiceProfile": {
             "STA": "06:25",
             "STD": "05:40",
-            "classOfTravel": "GEN",
+            "classOfTravel": "",
             "coachPositionAtSource": [
                 {
                     "coachClass": "GEN",
@@ -62,7 +62,15 @@
             "destinationPF": "1",
             "futureTrainFlag": 0,
             "gauge": "BG",
-            "hashMapStationListWTT": {},
+            "hashMapStationListWTT": {
+                "BVRM": 0,
+                "LKDU": 4,
+                "NS": 6,
+                "PAGM": 1,
+                "PKO": 5,
+                "SGKM": 2,
+                "VVM": 3
+            },
             "hashMapStationMultiList": {
                 "BVRM": "0",
                 "NS": "3",
@@ -79,8 +87,6 @@
             "prsClassOfTravel": "",
             "prsTrainFlag": 0,
             "rakeReversalList": "",
-            "reservedTrainFlag": 0,
-            "reservedTrainWithGeneralClassFlag": 1,
             "slipMainTrainFlag": 0,
             "slipTrainNo": "",
             "slipType": "",
@@ -99,25 +105,14 @@
             "trainTypeName": "MAIL EXPRESS",
             "trainTypeNameHindi": "मेल एक्सप्रेस",
             "travelTime": "00:45",
-            "utsClassOfTravel": "GEN",
+            "utsClassOfTravel": "",
             "utsFareCategory": "E",
-            "utsFareCategoryDesc": null,
+            "utsFareCategoryDesc": "MAIL EXPRESS",
             "utsMstAllowed": 1,
             "utsTrainFlag": 1,
-            "vTrainGroup": [
-                "MEXGRP",
-                "SHOW_IN_NTES",
-                "XXX"
-            ],
             "vTrainServiceSchedulePTT": [
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 0,
                     "division": "BZA",
                     "idTrainDef": 788853,
@@ -146,12 +141,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 11,
                     "division": "BZA",
                     "idTrainDef": 788853,
@@ -180,12 +169,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 21,
                     "division": "BZA",
                     "idTrainDef": 788853,
@@ -214,12 +197,6 @@
                 },
                 {
                     "arrDepDayChangeFlag": 0,
-                    "arrPWDCoachPosition": "",
-                    "arrivalCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "arrivalCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "depPWDCoachPosition": "",
-                    "departureCoachClass": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
-                    "departureCoachPosition": "GEN-GEN-GEN-GEN-GEN-GEN-GEN-GEN",
                     "distanceFromSource": 29,
                     "division": "BZA",
                     "idTrainDef": 788853,
@@ -247,7 +224,71 @@
                     "zone": "SCR"
                 }
             ],
-            "vTrainServiceScheduleWTT": null,
+            "vTrainServiceScheduleWTT": [
+                {
+                    "WTT_STA": "",
+                    "WTT_STD": "05:40",
+                    "kms": 0,
+                    "lattitude": "16.543487",
+                    "longitude": "81.538725",
+                    "serialNumber": 1,
+                    "station": "BVRM"
+                },
+                {
+                    "WTT_STA": "05:49",
+                    "WTT_STD": "05:49",
+                    "kms": 5,
+                    "lattitude": "16.541636",
+                    "longitude": "81.577992",
+                    "serialNumber": 2,
+                    "station": "PAGM"
+                },
+                {
+                    "WTT_STA": "05:51",
+                    "WTT_STD": "05:51",
+                    "kms": 7,
+                    "lattitude": "16.543446",
+                    "longitude": "81.601596",
+                    "serialNumber": 3,
+                    "station": "SGKM"
+                },
+                {
+                    "WTT_STA": "05:54",
+                    "WTT_STD": "05:56",
+                    "kms": 11,
+                    "lattitude": "16.542294",
+                    "longitude": "81.632710",
+                    "serialNumber": 4,
+                    "station": "VVM"
+                },
+                {
+                    "WTT_STA": "06:01",
+                    "WTT_STD": "06:01",
+                    "kms": 15,
+                    "lattitude": "16.534149",
+                    "longitude": "81.679316",
+                    "serialNumber": 5,
+                    "station": "LKDU"
+                },
+                {
+                    "WTT_STA": "06:06",
+                    "WTT_STD": "06:08",
+                    "kms": 21,
+                    "lattitude": "16.522094",
+                    "longitude": "81.716995",
+                    "serialNumber": 6,
+                    "station": "PKO"
+                },
+                {
+                    "WTT_STA": "06:25",
+                    "WTT_STD": "",
+                    "kms": 29,
+                    "lattitude": "16.445511",
+                    "longitude": "81.699529",
+                    "serialNumber": 7,
+                    "station": "NS"
+                }
+            ],
             "validFrom": "01-Jan-2025",
             "validTo": "31-Dec-2099"
         }
