@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 
 	"gopkg.in/yaml.v3"
@@ -12,6 +13,7 @@ type DataErrors struct {
 	WarningStations  map[string]Station `json:"warningStations" yaml:"warningStations"`
 	Updates          map[string]Station `json:"updates" yaml:"updates"`
 	Overrides        map[string]Station `json:"overrides" yaml:"overrides"`
+	IgnoredTrains    []string           `json:"ignoredTrains" yaml:"ignoredTrains"`
 }
 
 func NewDataErrors() (*DataErrors, error) {
@@ -26,6 +28,7 @@ func NewDataErrors() (*DataErrors, error) {
 	}
 	dataErrors.ErroringStations = map[string]Station{}
 	dataErrors.WarningStations = map[string]Station{}
+	dataErrors.IgnoredTrains = []string{}
 	return &dataErrors, nil
 }
 
@@ -79,6 +82,19 @@ func stationHasProblems(station *Station, fixes *DataErrors) bool {
 	return false
 }
 
+// Deprecated: This function may be removed after fixing station issues
+func trainHasProblems(train *TrainData, fixes *DataErrors) bool {
+	tStations := train.getStations()
+
+	if len(tStations) == 0 {
+		fmt.Printf("Skipping train %s because it has no valid stations\n", train.getTrainNumber())
+		fixes.IgnoredTrains = append(fixes.IgnoredTrains, train.getTrainNumber())
+		return true
+	}
+
+	return false
+}
+
 func (d *DataErrors) registerStationFixingError(station *Station) {
 	stationsFixingErrors++
 	if _, ok := d.ErroringStations[station.Code]; !ok {
@@ -94,8 +110,13 @@ func (d *DataErrors) registerStationFixingWarning(station *Station) {
 }
 
 func (d *DataErrors) getStationFixingReport() string {
-	d.Save()
 	return fmt.Sprintf("Station fixing report:\n\t %d total errors,\n\t %d total warnings,\n\t %d unique error stations,\n\t %d unique warning stations,\n\t", stationsFixingErrors, stationsFixingWarnings, len(d.ErroringStations), len(d.WarningStations))
+}
+
+func (d *DataErrors) getOverallFixingReport() string {
+	slices.Sort(d.IgnoredTrains)
+	d.Save()
+	return fmt.Sprintf("Overall fixing report:\n\t %d total errors,\n\t %d total warnings,\n\t %d unique error stations,\n\t %d unique warning stations,\n\t %d unique trains ignored,\n\t", stationsFixingErrors, stationsFixingWarnings, len(d.ErroringStations), len(d.WarningStations), len(d.IgnoredTrains))
 }
 
 func (d *DataErrors) Save() {
