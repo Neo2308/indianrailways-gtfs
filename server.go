@@ -377,28 +377,14 @@ func (s *Server) populateGTFSWriter(gw *GtfsWriter) {
 
 	for _, train := range s.trainData {
 		// TODO: Remove after fixing station issues
-		tStations := train.getStations()
-		// ok := true
-		if len(tStations) == 0 {
-			fmt.Printf("Skipping train %s because it has no valid stations\n", train.getTrainNumber())
+		if trainHasProblems(train, s.dataErrors) {
 			continue
 		}
-		// for _, station := range tStations {
-		//	fixStation(&station)
-		//	if stationHasProblems(&station) {
-		//		fmt.Printf("Skipping train %s because of station %s\n", station, train.getTrainNumber())
-		//		ok = false
-		//		break
-		//	}
-		// }
-		// if !ok {
-		//	continue
-		// }
 		gw.AddRoute(train.toRoute())
 		gw.AddTrips(train.toTrip())
 		gw.AddStopTimes(train.toStopTimes())
 	}
-
+	fmt.Println(s.dataErrors.getOverallFixingReport())
 	// for trainNumber, train := range s.trainData {
 	//	serviceId := fmt.Sprintf("S%d", trainNumber)
 	// }
