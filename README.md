@@ -23,9 +23,13 @@ TODO: Add instructions to get API key
     - Best to run http://localhost:8080/map/show/all before this.
 
 ## Checking for errors post fetch
+###### API Errors
 - Search everywhere for `"rc": "4` this will show all 4xx errors in the train service profile info.
 - Data for these trains can be re-fetched by deleting respective cached files and using:
   - http://localhost:8080/map/show/all
+###### Missing info
+- Trigger http://localhost:8080/save to see if any errors/warnings are generated in the console.
+- Check [fixes-data/adjustments.yaml](fixes-data/adjustments.yaml) and fix the sections for erroringStations, warningStations and move them to updates/overrides
 
 ## Status Report
 **Data generated**: Around 9th Nov 2025
@@ -38,4 +42,16 @@ TODO: Add instructions to get API key
 * 6 ignored trains
 
 **GTFS review report** (from [transport.data.gouv.fr](https://transport.data.gouv.fr/))
-https://transport.data.gouv.fr/validation/517479?token=3ffe848d-2f44-47a6-aa60-c375ac43639b
+https://transport.data.gouv.fr/validation/517981?token=18b3d9ec-ab04-4ee2-aa52-2443d550ab60
+
+## Users
+- [Transitous](https://transitous.org)
+  - Shoutout to [Lach-anonym](https://github.com/Lach-anonym) for adding the info here ([PR](https://github.com/public-transport/transitous/pull/1614))
+- [MobilityDatabase](https://mobilitydatabase.org/feeds/gtfs/mdb-2867)
+- [CatenaryMaps](https://maps.catenarymaps.org/#pos=4.39/20.69/84.4)
+  - Shoutout to [Ethanc8](https://github.com/ethanc8) for adding the info here ([PR](https://github.com/catenarytransit/transitland-atlas/pull/58))
+- [TransitRouter](https://transitrouter.vonter.in/#/railways/)
+  - Shoutout to [Vonter](https://github.com/Vonter)
+  - [Source Code](https://github.com/Vonter/transitrouter)
+
+(Please open an issue/PR to add your project here using this data)
