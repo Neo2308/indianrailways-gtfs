@@ -6,18 +6,21 @@ import (
 	"strings"
 
 	"gopkg.in/yaml.v3"
+
+	"github.com/Neo2308/indianrailways-gtfs/fileUtils"
+	"github.com/Neo2308/indianrailways-gtfs/models"
 )
 
 type DataErrors struct {
-	ErroringStations map[string]Station `json:"erroringStations" yaml:"erroringStations"`
-	WarningStations  map[string]Station `json:"warningStations" yaml:"warningStations"`
-	Updates          map[string]Station `json:"updates" yaml:"updates"`
-	Overrides        map[string]Station `json:"overrides" yaml:"overrides"`
-	IgnoredTrains    []string           `json:"ignoredTrains" yaml:"ignoredTrains"`
+	ErroringStations map[string]models.Station `json:"erroringStations" yaml:"erroringStations"`
+	WarningStations  map[string]models.Station `json:"warningStations" yaml:"warningStations"`
+	Updates          map[string]models.Station `json:"updates" yaml:"updates"`
+	Overrides        map[string]models.Station `json:"overrides" yaml:"overrides"`
+	IgnoredTrains    []string                  `json:"ignoredTrains" yaml:"ignoredTrains"`
 }
 
 func NewDataErrors() (*DataErrors, error) {
-	data, err := loadFile("adjustments.yaml", FIXES)
+	data, err := fileUtils.LoadFile("adjustments.yaml", fileUtils.FIXES)
 	if err != nil {
 		return nil, err
 	}
@@ -26,8 +29,8 @@ func NewDataErrors() (*DataErrors, error) {
 	if err != nil {
 		return nil, err
 	}
-	dataErrors.ErroringStations = map[string]Station{}
-	dataErrors.WarningStations = map[string]Station{}
+	dataErrors.ErroringStations = map[string]models.Station{}
+	dataErrors.WarningStations = map[string]models.Station{}
 	dataErrors.IgnoredTrains = []string{}
 	return &dataErrors, nil
 }
@@ -35,7 +38,7 @@ func NewDataErrors() (*DataErrors, error) {
 var stationsFixingErrors = 0
 var stationsFixingWarnings = 0
 
-func fixStation(station *Station, fixes *DataErrors) {
+func fixStation(station *models.Station, fixes *DataErrors) {
 	if fix, ok := fixes.Overrides[station.Code]; ok {
 		station.Code = fix.Code
 		station.Name = fix.Name
@@ -73,7 +76,7 @@ func fixStation(station *Station, fixes *DataErrors) {
 	}
 }
 
-func stationHasProblems(station *Station, fixes *DataErrors) bool {
+func stationHasProblems(station *models.Station, fixes *DataErrors) bool {
 	if station.Lat == "" || station.Lng == "" || station.Lat == "0.000000" || station.Lng == "0.000000" || station.Lat == "1.000000" || station.Lng == "1.000000" || strings.TrimSpace(station.Name) == "" {
 		fmt.Println("stationHasProblems: ", station)
 		fixes.registerStationFixingError(station)
@@ -95,14 +98,14 @@ func trainHasProblems(train *TrainData, fixes *DataErrors) bool {
 	return false
 }
 
-func (d *DataErrors) registerStationFixingError(station *Station) {
+func (d *DataErrors) registerStationFixingError(station *models.Station) {
 	stationsFixingErrors++
 	if _, ok := d.ErroringStations[station.Code]; !ok {
 		d.ErroringStations[station.Code] = *station
 	}
 }
 
-func (d *DataErrors) registerStationFixingWarning(station *Station) {
+func (d *DataErrors) registerStationFixingWarning(station *models.Station) {
 	stationsFixingWarnings++
 	if _, ok := d.WarningStations[station.Code]; !ok {
 		d.WarningStations[station.Code] = *station
@@ -126,7 +129,7 @@ func (d *DataErrors) Save() {
 		fmt.Println("Error marshalling to YAML: ", err)
 		panic(err)
 	}
-	err = saveFile("adjustments.yaml", yamlData, FIXES)
+	err = fileUtils.SaveFile("adjustments.yaml", yamlData, fileUtils.FIXES)
 	if err != nil {
 		panic(err)
 	}

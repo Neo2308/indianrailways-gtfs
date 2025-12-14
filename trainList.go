@@ -6,31 +6,22 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/Neo2308/indianrailways-gtfs/apiDataFetcher"
+	"github.com/Neo2308/indianrailways-gtfs/models"
 )
 
 type TrainListData struct {
-	ApiDataFetcher[TrainServiceProfileResponse]
+	apiDataFetcher.ApiDataFetcher[models.TrainServiceProfileResponse]
 	searchWord                  string
-	TrainServiceProfileResponse TrainServiceProfileResponse
-}
-
-type pd struct {
-	RestServiceMessage  interface{}         `json:"restServiceMessage"`
-	TrainServiceProfile TrainServiceProfile `json:"trainServiceProfile"`
-	VTrainList          []vTrainList        `json:"vTrainList"`
-}
-
-type vTrainList struct {
-	TrainNumber string `json:"trainNo"`
-	TrainName   string `json:"trainName"`
-	TrainType   string `json:"trainType"`
+	TrainServiceProfileResponse models.TrainServiceProfileResponse
 }
 
 func NewTrainListData(searchWord string) *TrainListData {
 	newObj := &TrainListData{
 		searchWord: searchWord,
 	}
-	newObj.ApiDataFetcher = *newApiDataFetcher[TrainServiceProfileResponse](
+	newObj.ApiDataFetcher = *apiDataFetcher.NewApiDataFetcher[models.TrainServiceProfileResponse](
 		&newObj.TrainServiceProfileResponse,
 		"train search",
 		fmt.Sprintf("searches/%s.json", searchWord),
@@ -42,11 +33,11 @@ func NewTrainListData(searchWord string) *TrainListData {
 func (t *TrainListData) getTrains() []int {
 	_ = t.LoadData()
 	trainNumbers := []int{}
-	//fmt.Println(t.TrainServiceProfileResponse)
+	// fmt.Println(t.TrainServiceProfileResponse)
 	for _, v := range t.TrainServiceProfileResponse.Pd.VTrainList {
 		trainNumber, _ := strconv.Atoi(v.TrainNumber)
 
-		//fmt.Println("Found train:", v.TrainNumber, v.TrainName, " in search")
+		// fmt.Println("Found train:", v.TrainNumber, v.TrainName, " in search")
 		trainNumbers = append(trainNumbers, trainNumber)
 	}
 	return trainNumbers
@@ -56,7 +47,7 @@ func (t *TrainListData) getTrainSearchesUncached() error {
 	url := "https://apigw.umangapp.in/CRISApi/ws1/ntes/s1/trainSearch"
 	method := "POST"
 
-	//payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","startDate":"25-May-2025","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, train_number)
+	// payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","startDate":"25-May-2025","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, train_number)
 	payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, t.searchWord)
 	fmt.Println("Making request to fetch trains matching the keyword:", t.searchWord)
 	fmt.Println(payload)
@@ -93,5 +84,5 @@ func (t *TrainListData) getTrainSearchesUncached() error {
 	req.Header.Add("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36")
 	req.Header.Add("x-api-key", getXApiKey())
 
-	return t.fetchData(req, client)
+	return t.FetchData(req, client)
 }

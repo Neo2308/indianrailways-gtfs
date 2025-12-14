@@ -1,4 +1,4 @@
-package main
+package apiDataFetcher
 
 import (
 	"encoding/json"
@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/Neo2308/indianrailways-gtfs/fileUtils"
 )
 
 var throttlingInterval = 7 * time.Second // seconds
@@ -18,7 +20,7 @@ type ApiDataFetcher[T any] struct {
 	RefetchFunc   func() error
 }
 
-func newApiDataFetcher[T any](dataLocation *T, urlType string, cacheFileName string, refetchFunc func() error) *ApiDataFetcher[T] {
+func NewApiDataFetcher[T any](dataLocation *T, urlType string, cacheFileName string, refetchFunc func() error) *ApiDataFetcher[T] {
 	return &ApiDataFetcher[T]{
 		DataLocation:  dataLocation,
 		UrlType:       urlType,
@@ -31,15 +33,15 @@ func (a *ApiDataFetcher[T]) LoadData() error {
 	// file_name := fmt.Sprintf("%s.json", fmt.Sprintf("%d", t.trainNumber))
 	// file_name := '{}.json'.format(train_number)
 	// Load json from cache if available
-	data, _ := loadFile(a.CacheFileName, CACHE)
+	data, _ := fileUtils.LoadFile(a.CacheFileName, fileUtils.CACHE)
 	return json.Unmarshal(data, a.DataLocation)
 }
 
-func (a *ApiDataFetcher[T]) populateData() error {
+func (a *ApiDataFetcher[T]) PopulateData() error {
 	// file_name := fmt.Sprintf("searches/%s.json", searchString)
 	// file_name := '{}.json'.format(train_number)
 	// Load json from cache if available
-	data, err := loadFile(a.CacheFileName, CACHE)
+	data, err := fileUtils.LoadFile(a.CacheFileName, fileUtils.CACHE)
 	if err == nil {
 		// fmt.Printf("Cache hit for %s, loading from cache...\n", a.CacheFileName)
 		// fmt.Println(string(data))
@@ -52,7 +54,7 @@ func (a *ApiDataFetcher[T]) populateData() error {
 	return a.RefetchFunc()
 }
 
-func (a *ApiDataFetcher[T]) fetchData(req *http.Request, client *http.Client) error {
+func (a *ApiDataFetcher[T]) FetchData(req *http.Request, client *http.Client) error {
 	a.throttleRequests()
 	res, err := client.Do(req)
 	if err != nil {
@@ -72,7 +74,7 @@ func (a *ApiDataFetcher[T]) fetchData(req *http.Request, client *http.Client) er
 		json.NewDecoder(res.Body).Decode(&result)
 		defer res.Body.Close()
 		responseJson, _ := json.MarshalIndent(result, "", "    ")
-		return saveFile(a.CacheFileName, responseJson, CACHE)
+		return fileUtils.SaveFile(a.CacheFileName, responseJson, fileUtils.CACHE)
 	}
 	return fmt.Errorf("failed to fetch %s data, %d - %s", a.UrlType, res.StatusCode, res.Status)
 }

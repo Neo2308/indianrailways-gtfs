@@ -1,16 +1,18 @@
-package main
+package mapData
 
 import (
 	"fmt"
-	"github.com/morikuni/go-geoplot"
 	"image/color"
 	"strconv"
+
+	"github.com/Neo2308/indianrailways-gtfs/models"
+	"github.com/morikuni/go-geoplot"
 )
 
 type MapData struct {
 	Map         *geoplot.Map
 	StationIcon *geoplot.Icon
-	Stations    map[string]*Station
+	Stations    map[string]*models.Station
 }
 
 func NewMapData() *MapData {
@@ -30,12 +32,12 @@ func NewMapData() *MapData {
 	return &MapData{
 		Map:         m,
 		StationIcon: geoplot.ColorIcon(58, 195, 112),
-		Stations:    map[string]*Station{},
+		Stations:    map[string]*models.Station{},
 	}
 }
 
-func (m *MapData) AddStation(station *Station) {
-	//fmt.Printf("Trying to added station:%s\n", station.Code)
+func (m *MapData) AddStation(station *models.Station) {
+	// fmt.Printf("Trying to added station:%s\n", station.Code)
 	// Ignore stations that have already been added
 	if _, ok := m.Stations[station.Code]; ok {
 		return
@@ -53,27 +55,27 @@ func (m *MapData) AddStation(station *Station) {
 		Tooltip: station.Name,
 		Icon:    m.StationIcon,
 	})
-	//fmt.Printf("Added station:%s at (%f,%f) \n", station.Code, lat, lng)
+	// fmt.Printf("Added station:%s at (%f,%f) \n", station.Code, lat, lng)
 }
 
 func (m *MapData) AddRoute(trainNumber int, routePoints []*geoplot.LatLng) {
-	//fmt.Printf("Trying to added route:%d\n", trainNumber)
-	//// Ignore stations that have already been added
-	//if _, ok := m.Stations[station.Code]; ok {
+	// fmt.Printf("Trying to added route:%d\n", trainNumber)
+	// // Ignore stations that have already been added
+	// if _, ok := m.Stations[station.Code]; ok {
 	//	return
-	//}
-	//m.Stations[station.Code] = station
-	//lat, _ := strconv.ParseFloat(station.Lat, 32)
-	//lng, _ := strconv.ParseFloat(station.Lng, 32)
+	// }
+	// m.Stations[station.Code] = station
+	// lat, _ := strconv.ParseFloat(station.Lat, 32)
+	// lng, _ := strconv.ParseFloat(station.Lng, 32)
 
 	m.Map.AddPolyline(&geoplot.Polyline{
 		LatLngs: routePoints,
 		Popup:   "Route of " + strconv.Itoa(trainNumber),
 		Color:   &color.RGBA{255, 116, 0, 1},
 	})
-	//fmt.Println("Added route of ", trainNumber)
+	// fmt.Println("Added route of ", trainNumber)
 }
 
-func (m *MapData) getMap() *geoplot.Map {
+func (m *MapData) GetMap() *geoplot.Map {
 	return m.Map
 }

@@ -9,55 +9,18 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Neo2308/indianrailways-gtfs/types"
 	"github.com/morikuni/go-geoplot"
+
+	"github.com/Neo2308/indianrailways-gtfs/apiDataFetcher"
+	"github.com/Neo2308/indianrailways-gtfs/models"
+	"github.com/Neo2308/indianrailways-gtfs/types"
 )
 
 type TrainData struct {
-	ApiDataFetcher[TrainServiceProfileResponse]
+	apiDataFetcher.ApiDataFetcher[models.TrainServiceProfileResponse]
 	trainNumber                 int
-	TrainServiceProfileResponse TrainServiceProfileResponse
+	TrainServiceProfileResponse models.TrainServiceProfileResponse
 	dataErrors                  *DataErrors
-}
-
-type Station struct {
-	Code string `json:"code"`
-	Name string `json:"name"`
-	Lat  string `json:"lat"`
-	Lng  string `json:"lng"`
-}
-
-type TrainServiceProfileResponse struct {
-	Pd pd     `json:"pd"`
-	Rc string `json:"rc"`
-	Rd string `json:"rd"`
-	Rs string `json:"rs"`
-}
-
-type TrainServiceProfile struct {
-	VTrainServiceSchedulePTT   []vTrainServiceSchedulePTT `json:"vTrainServiceSchedulePTT"`
-	VTrainServiceScheduleWTT   []vTrainServiceScheduleWTT `json:"vTrainServiceScheduleWTT"`
-	DaysOfRunFromSourceNumeric string                     `json:"daysOfRunFromSourceNumeric"`
-	TrainName                  string                     `json:"trainName"`
-	DestinationName            string                     `json:"destinationName"`
-}
-
-type vTrainServiceSchedulePTT struct {
-	SerialNumber             int    `json:"serialNumber"`
-	StationName              string `json:"stationName"`
-	StationCode              string `json:"station"`
-	Lattitude                string `json:"lattitude"`
-	Longitude                string `json:"longitude"`
-	PttArrivalTimeInSecond   int    `json:"pttArrivalTimeInSecond"`
-	PttDepartureTimeInSecond int    `json:"pttDepartureTimeInSecond"`
-	DistanceFromSource       int    `json:"distanceFromSource"`
-}
-
-type vTrainServiceScheduleWTT struct {
-	SerialNumber int    `json:"serialNumber"`
-	StationCode  string `json:"station"`
-	Lattitude    string `json:"lattitude"`
-	Longitude    string `json:"longitude"`
 }
 
 func NewTrainData(trainNumber int, dataErrors *DataErrors) *TrainData {
@@ -65,7 +28,7 @@ func NewTrainData(trainNumber int, dataErrors *DataErrors) *TrainData {
 		trainNumber: trainNumber,
 		dataErrors:  dataErrors,
 	}
-	newObj.ApiDataFetcher = *newApiDataFetcher[TrainServiceProfileResponse](
+	newObj.ApiDataFetcher = *apiDataFetcher.NewApiDataFetcher[models.TrainServiceProfileResponse](
 		&newObj.TrainServiceProfileResponse,
 		"train service profile",
 		fmt.Sprintf("%s.json", newObj.getTrainNumber()),
@@ -74,12 +37,12 @@ func NewTrainData(trainNumber int, dataErrors *DataErrors) *TrainData {
 	return newObj
 }
 
-func (t *TrainData) getStations() []Station {
+func (t *TrainData) getStations() []models.Station {
 	_ = t.LoadData()
-	stations := []Station{}
+	stations := []models.Station{}
 	// fmt.Println(t.TrainServiceProfileResponse)
 	for _, v := range t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceSchedulePTT {
-		newStation := Station{
+		newStation := models.Station{
 			Code: v.StationCode,
 			Name: v.StationName,
 			Lat:  v.Lattitude,
@@ -89,7 +52,7 @@ func (t *TrainData) getStations() []Station {
 		fixStation(&newStation, t.dataErrors)
 		if stationHasProblems(&newStation, t.dataErrors) {
 			// fmt.Println("Station has problems: ", newStation)
-			stations = []Station{}
+			stations = []models.Station{}
 			break
 		}
 		// fmt.Println(v)
@@ -176,7 +139,7 @@ func (t *TrainData) getTrainServiceProfileUncached() error {
 	req.Header.Add("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36")
 	req.Header.Add("x-api-key", getXApiKey())
 
-	return t.fetchData(req, client)
+	return t.FetchData(req, client)
 
 }
 

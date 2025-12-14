@@ -6,19 +6,22 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/Neo2308/indianrailways-gtfs/apiDataFetcher"
+	"github.com/Neo2308/indianrailways-gtfs/models"
 )
 
 type LiveStationData struct {
-	ApiDataFetcher[TrainServiceProfileResponse]
+	apiDataFetcher.ApiDataFetcher[models.TrainServiceProfileResponse]
 	stationCode                 string
-	TrainServiceProfileResponse TrainServiceProfileResponse
+	TrainServiceProfileResponse models.TrainServiceProfileResponse
 }
 
 func NewLiveStationData(stationCode string) *LiveStationData {
 	newObj := &LiveStationData{
 		stationCode: stationCode,
 	}
-	newObj.ApiDataFetcher = *newApiDataFetcher[TrainServiceProfileResponse](
+	newObj.ApiDataFetcher = *apiDataFetcher.NewApiDataFetcher[models.TrainServiceProfileResponse](
 		&newObj.TrainServiceProfileResponse,
 		"live station",
 		fmt.Sprintf("station/%s.json", stationCode),
@@ -30,10 +33,10 @@ func NewLiveStationData(stationCode string) *LiveStationData {
 func (t *LiveStationData) getTrains() []int {
 	_ = t.LoadData()
 	trainNumbers := []int{}
-	//fmt.Println(t.TrainServiceProfileResponse)
+	// fmt.Println(t.TrainServiceProfileResponse)
 	for _, v := range t.TrainServiceProfileResponse.Pd.VTrainList {
 		trainNumber, _ := strconv.Atoi(v.TrainNumber)
-		//fmt.Println("Found train:", v.TrainNumber, v.TrainName, " in search")
+		// fmt.Println("Found train:", v.TrainNumber, v.TrainName, " in search")
 		trainNumbers = append(trainNumbers, trainNumber)
 	}
 	return trainNumbers
@@ -43,7 +46,7 @@ func (t *LiveStationData) getTrainSearchesUncached() error {
 	url := "https://apigw.umangapp.in/CRISApi/ws1/ntes/s2/liveStation"
 	method := "POST"
 
-	//payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","startDate":"25-May-2025","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, train_number)
+	// payload := fmt.Sprintf(`{"srvid":"1989","trainNumber":"%s","startDate":"25-May-2025","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, train_number)
 	payload := fmt.Sprintf(`{"srvid":"1988","stationCode":"%s","goingTo":"","nextMins":"480","tkn":"","lang":"en","language":"en","usrid":"","mode":"web","pltfrm":"ios","did":null,"deptid":"100014","formtrkr":"0","subsid":"0","subsid2":"0"}`, t.stationCode)
 	fmt.Println("Making request to fetch trains for the station:", t.stationCode)
 	fmt.Println(payload)
@@ -80,5 +83,5 @@ func (t *LiveStationData) getTrainSearchesUncached() error {
 	req.Header.Add("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36")
 	req.Header.Add("x-api-key", getXApiKey())
 
-	return t.fetchData(req, client)
+	return t.FetchData(req, client)
 }
