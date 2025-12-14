@@ -1,4 +1,4 @@
-package main
+package gtfsWriter
 
 import (
 	"archive/zip"
@@ -10,6 +10,7 @@ import (
 
 	"github.com/gocarina/gocsv"
 
+	"github.com/Neo2308/indianrailways-gtfs/fileUtils"
 	"github.com/Neo2308/indianrailways-gtfs/types"
 )
 
@@ -148,7 +149,7 @@ func (g *GtfsWriter) writeCSVFile(data interface{}, fileName string) error {
 	}
 	// Save to file
 	outputFile := filepath.Join(output_path, fileName)
-	return saveFile(outputFile, writeBytes, OUTPUT)
+	return fileUtils.SaveFile(outputFile, writeBytes, fileUtils.OUTPUT)
 }
 
 func (g *GtfsWriter) actuallyWriteToZip() error {
@@ -192,5 +193,5 @@ func (g *GtfsWriter) actuallyWriteToZip() error {
 		return err
 	}
 	zipBytes := buf.Bytes()
-	return saveFile("gtfs.zip", zipBytes, OUTPUT)
+	return fileUtils.SaveFile("gtfs.zip", zipBytes, fileUtils.OUTPUT)
 }

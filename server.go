@@ -7,9 +7,14 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Neo2308/indianrailways-gtfs/types"
 	"github.com/gorilla/mux"
 	"github.com/morikuni/go-geoplot"
+
+	"github.com/Neo2308/indianrailways-gtfs/fileUtils"
+	"github.com/Neo2308/indianrailways-gtfs/gtfsWriter"
+	"github.com/Neo2308/indianrailways-gtfs/models"
+	"github.com/Neo2308/indianrailways-gtfs/server/mapData"
+	"github.com/Neo2308/indianrailways-gtfs/types"
 )
 
 const timezone = "Asia/Kolkata"
@@ -17,7 +22,7 @@ const timezone = "Asia/Kolkata"
 type Server struct {
 	// mapData   *MapData
 	trainData       map[int]*TrainData
-	stations        map[string]*Station
+	stations        map[string]*models.Station
 	runningDays     map[string]struct{}
 	TrainListData   map[string]*TrainListData
 	LiveStationData map[string]*LiveStationData
@@ -26,7 +31,7 @@ type Server struct {
 
 func NewServer() *Server {
 	trainData := map[int]*TrainData{}
-	stations := map[string]*Station{}
+	stations := map[string]*models.Station{}
 	dataErrors, err := NewDataErrors()
 	if err != nil {
 		panic(err)
@@ -66,7 +71,7 @@ func (s *Server) Setup() error {
 func (s *Server) AddTrain(trainNumber int) error {
 	newTrain := NewTrainData(trainNumber, s.dataErrors)
 	s.trainData[trainNumber] = newTrain
-	err := newTrain.populateData()
+	err := newTrain.PopulateData()
 	if err != nil {
 		fmt.Printf("Error fetching train service profile for %d: %e\n", trainNumber, err)
 		return err
@@ -93,7 +98,7 @@ func (s *Server) AddTrain(trainNumber int) error {
 func (s *Server) AddTrainList(prefixText string) error {
 	newList := NewTrainListData(prefixText)
 	s.TrainListData[prefixText] = newList
-	err := newList.populateData()
+	err := newList.PopulateData()
 	if err != nil {
 		fmt.Println("Error fetching search results for", prefixText, ":", err)
 		return err
@@ -116,7 +121,7 @@ func (s *Server) AddTrainList(prefixText string) error {
 func (s *Server) AddLiveStationInfo(stationCode string) error {
 	newList := NewLiveStationData(stationCode)
 	s.LiveStationData[stationCode] = newList
-	err := newList.populateData()
+	err := newList.PopulateData()
 	if err != nil {
 		fmt.Println("Error fetching live station results for", stationCode, ":", err)
 		return err
@@ -136,8 +141,8 @@ func (s *Server) AddLiveStationInfo(stationCode string) error {
 	return nil
 }
 
-func (s *Server) generateMap() *MapData {
-	trainMap := NewMapData()
+func (s *Server) generateMap() *mapData.MapData {
+	trainMap := mapData.NewMapData()
 	for _, train := range s.trainData {
 		trainMap.AddRoute(train.getNumber(), s.generateRouteForTrain(train.getNumber()))
 	}
@@ -147,8 +152,8 @@ func (s *Server) generateMap() *MapData {
 	return trainMap
 }
 
-func (s *Server) generateMapForTrain(trainNumber int, showMarkers bool) *MapData {
-	trainMap := NewMapData()
+func (s *Server) generateMapForTrain(trainNumber int, showMarkers bool) *mapData.MapData {
+	trainMap := mapData.NewMapData()
 	trainMap.AddRoute(trainNumber, s.generateRouteForTrain(trainNumber))
 	if showMarkers {
 		for _, station := range s.stations {
@@ -158,8 +163,8 @@ func (s *Server) generateMapForTrain(trainNumber int, showMarkers bool) *MapData
 	return trainMap
 }
 
-func (s *Server) generateMapForTrainBySearch(prefixText string, showMarkers bool) *MapData {
-	trainMap := NewMapData()
+func (s *Server) generateMapForTrainBySearch(prefixText string, showMarkers bool) *mapData.MapData {
+	trainMap := mapData.NewMapData()
 	trainsList := s.TrainListData[prefixText].getTrains()
 	for _, trainNumber := range trainsList {
 		trainMap.AddRoute(trainNumber, s.generateRouteForTrain(trainNumber))
@@ -172,8 +177,8 @@ func (s *Server) generateMapForTrainBySearch(prefixText string, showMarkers bool
 	return trainMap
 }
 
-func (s *Server) generateMapForTrainByLiveStation(stationCode string, showMarkers bool) *MapData {
-	trainMap := NewMapData()
+func (s *Server) generateMapForTrainByLiveStation(stationCode string, showMarkers bool) *mapData.MapData {
+	trainMap := mapData.NewMapData()
 	trainsList := s.LiveStationData[stationCode].getTrains()
 	for _, trainNumber := range trainsList {
 		trainMap.AddRoute(trainNumber, s.generateRouteForTrain(trainNumber))
@@ -207,7 +212,7 @@ func (s *Server) generateRouteForTrain(trainNumber int) []*geoplot.LatLng {
 }
 
 func (s *Server) handleGetMap(w http.ResponseWriter, r *http.Request) {
-	err := geoplot.ServeMap(w, r, s.generateMap().getMap())
+	err := geoplot.ServeMap(w, r, s.generateMap().GetMap())
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -234,7 +239,7 @@ func (s *Server) handleGetMapForTrain(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	err := geoplot.ServeMap(w, r, s.generateMapForTrain(trainNumber, false).getMap())
+	err := geoplot.ServeMap(w, r, s.generateMapForTrain(trainNumber, false).GetMap())
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -261,7 +266,7 @@ func (s *Server) handleGetMapBySearch(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	err := geoplot.ServeMap(w, r, s.generateMapForTrainBySearch(prefixText, false).getMap())
+	err := geoplot.ServeMap(w, r, s.generateMapForTrainBySearch(prefixText, false).GetMap())
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -288,7 +293,7 @@ func (s *Server) handleGetMapByLiveStation(w http.ResponseWriter, r *http.Reques
 			return
 		}
 	}
-	err := geoplot.ServeMap(w, r, s.generateMapForTrainByLiveStation(stationCode, false).getMap())
+	err := geoplot.ServeMap(w, r, s.generateMapForTrainByLiveStation(stationCode, false).GetMap())
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -312,14 +317,14 @@ func (s *Server) populateAllTrains(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	fmt.Println(s.dataErrors.getStationFixingReport())
-	err := geoplot.ServeMap(w, r, s.generateMap().getMap())
+	err := geoplot.ServeMap(w, r, s.generateMap().GetMap())
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
 }
 
-func (s *Server) populateGTFSWriter(gw *GtfsWriter) {
+func (s *Server) populateGTFSWriter(gw *gtfsWriter.GtfsWriter) {
 	for _, station := range s.stations {
 		// TODO: Remove after fixing station issues
 		if stationHasProblems(station, s.dataErrors) {
@@ -392,7 +397,7 @@ func (s *Server) populateGTFSWriter(gw *GtfsWriter) {
 }
 
 func (s *Server) saveGTFS(w http.ResponseWriter, r *http.Request) {
-	gw := NewGtfsWriter()
+	gw := gtfsWriter.NewGtfsWriter()
 	s.populateGTFSWriter(gw)
 	err := gw.WriteToZip()
 	if err != nil {
@@ -400,7 +405,7 @@ func (s *Server) saveGTFS(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	data, err := loadFile("gtfs.zip", OUTPUT)
+	data, err := fileUtils.LoadFile("gtfs.zip", fileUtils.OUTPUT)
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
