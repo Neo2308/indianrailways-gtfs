@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"bytes"
@@ -211,7 +211,7 @@ func (s *Server) generateRouteForTrain(trainNumber int) []*geoplot.LatLng {
 	return route
 }
 
-func (s *Server) handleGetMap(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetMap(w http.ResponseWriter, r *http.Request) {
 	err := geoplot.ServeMap(w, r, s.generateMap().GetMap())
 	if err != nil {
 		fmt.Println(err)
@@ -219,7 +219,7 @@ func (s *Server) handleGetMap(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *Server) handleGetMapForTrain(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetMapForTrain(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	trainNumber, _ := strconv.Atoi(vars["trainNumber"])
 	// Check if train number is valid
@@ -246,7 +246,7 @@ func (s *Server) handleGetMapForTrain(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *Server) handleGetMapBySearch(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetMapBySearch(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	prefixText := vars["prefixText"]
 	// Check if train number is valid
@@ -273,7 +273,7 @@ func (s *Server) handleGetMapBySearch(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (s *Server) handleGetMapByLiveStation(w http.ResponseWriter, r *http.Request) {
+func (s *Server) HandleGetMapByLiveStation(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	stationCode := vars["stationCode"]
 	// Check if train number is valid
@@ -300,7 +300,7 @@ func (s *Server) handleGetMapByLiveStation(w http.ResponseWriter, r *http.Reques
 	}
 }
 
-func (s *Server) populateAllTrains(w http.ResponseWriter, r *http.Request) {
+func (s *Server) PopulateAllTrains(w http.ResponseWriter, r *http.Request) {
 	// vars := mux.Vars(r)
 	// prefixText := vars["prefixText"]
 	//
@@ -396,7 +396,7 @@ func (s *Server) populateGTFSWriter(gw *gtfsWriter.GtfsWriter) {
 
 }
 
-func (s *Server) saveGTFS(w http.ResponseWriter, r *http.Request) {
+func (s *Server) SaveGTFS(w http.ResponseWriter, r *http.Request) {
 	gw := gtfsWriter.NewGtfsWriter()
 	s.populateGTFSWriter(gw)
 	err := gw.WriteToZip()
