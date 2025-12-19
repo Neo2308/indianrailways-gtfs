@@ -325,6 +325,24 @@ func (s *Server) PopulateAllTrains(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) populateGTFSWriter(gw *gtfsWriter.GtfsWriter) {
+	gw.AddAgency(types.Agency{
+		AgencyId:       "1",
+		AgencyName:     "Indian Railways",
+		AgencyUrl:      "https://indianrailways.gov.in/",
+		AgencyTimezone: "Asia/Kolkata",
+		AgencyLang:     "en",
+		CEMVSupport:    types.CEMVSupportSupported,
+	})
+	gw.AddFeedInfo(types.FeedInfo{
+		FeedPublisherName: "P. Radha Krishna",
+		FeedPublisherUrl:  "https://github.com/Neo2308",
+		FeedLang:          "en",
+		FeedStartDate:     types.Date{Time: time.Now()},
+		FeedEndDate:       types.Date{Time: time.Now().AddDate(0, 1, 0)},
+		FeedVersion:       time.Now().Format("2006-01-02-15-04-05"),
+		FeedContactEmail:  "pradha.krishna.cse17@itbhu.ac.in",
+		FeedContactUrl:    "",
+	})
 	for _, station := range s.stations {
 		// TODO: Remove after fixing station issues
 		if stationHasProblems(station, s.dataErrors) {
@@ -387,7 +405,9 @@ func (s *Server) populateGTFSWriter(gw *gtfsWriter.GtfsWriter) {
 		}
 		gw.AddRoute(train.toRoute())
 		gw.AddTrips(train.toTrip())
-		gw.AddStopTimes(train.toStopTimes())
+		stopTimes, shapes := train.toStopTimes()
+		gw.AddStopTimes(stopTimes)
+		gw.AddShapes(shapes)
 	}
 	fmt.Println(s.dataErrors.getOverallFixingReport())
 	// for trainNumber, train := range s.trainData {
@@ -397,7 +417,7 @@ func (s *Server) populateGTFSWriter(gw *gtfsWriter.GtfsWriter) {
 }
 
 func (s *Server) SaveGTFS(w http.ResponseWriter, r *http.Request) {
-	gw := gtfsWriter.NewGtfsWriter()
+	gw := gtfsWriter.NewGtfsWriter(true)
 	s.populateGTFSWriter(gw)
 	err := gw.WriteToZip()
 	if err != nil {

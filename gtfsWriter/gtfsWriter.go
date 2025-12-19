@@ -6,7 +6,6 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
-	"time"
 
 	"github.com/gocarina/gocsv"
 
@@ -17,45 +16,36 @@ import (
 const output_path = "gtfs/"
 
 type GtfsWriter struct {
-	agencies  []types.Agency
-	feedInfo  []types.FeedInfo
-	stops     []types.Stop
-	routes    []types.Route
-	trips     []types.Trip
-	stopTimes []types.StopTime
-	calendar  []types.Calendar
+	agencies       []types.Agency
+	feedInfo       []types.FeedInfo
+	stops          []types.Stop
+	routes         []types.Route
+	trips          []types.Trip
+	stopTimes      []types.StopTime
+	calendar       []types.Calendar
+	shapes         []types.Shape
+	supportsShapes bool
 }
 
-func NewGtfsWriter() *GtfsWriter {
+func NewGtfsWriter(supportsShapes bool) *GtfsWriter {
 	return &GtfsWriter{
-		agencies: []types.Agency{
-			{
-				AgencyId:       "1",
-				AgencyName:     "Indian Railways",
-				AgencyUrl:      "https://indianrailways.gov.in/",
-				AgencyTimezone: "Asia/Kolkata",
-				AgencyLang:     "en",
-				CEMVSupport:    types.CEMVSupportSupported,
-			},
-		},
-		feedInfo: []types.FeedInfo{
-			{
-				FeedPublisherName: "P. Radha Krishna",
-				FeedPublisherUrl:  "https://github.com/Neo2308",
-				FeedLang:          "en",
-				FeedStartDate:     types.Date{Time: time.Now()},
-				FeedEndDate:       types.Date{Time: time.Now().AddDate(0, 1, 0)},
-				FeedVersion:       time.Now().Format("2006-01-02-15-04-05"),
-				FeedContactEmail:  "pradha.krishna.cse17@itbhu.ac.in",
-				FeedContactUrl:    "",
-			},
-		},
-		stops:     []types.Stop{},
-		routes:    []types.Route{},
-		trips:     []types.Trip{},
-		stopTimes: []types.StopTime{},
-		calendar:  []types.Calendar{},
+		supportsShapes: supportsShapes,
+		agencies:       []types.Agency{},
+		feedInfo:       []types.FeedInfo{},
+		stops:          []types.Stop{},
+		routes:         []types.Route{},
+		trips:          []types.Trip{},
+		stopTimes:      []types.StopTime{},
+		calendar:       []types.Calendar{},
 	}
+}
+
+func (g *GtfsWriter) AddAgency(agency types.Agency) {
+	g.agencies = append(g.agencies, agency)
+}
+
+func (g *GtfsWriter) AddFeedInfo(feedInfo types.FeedInfo) {
+	g.feedInfo = append(g.feedInfo, feedInfo)
 }
 
 func (g *GtfsWriter) AddStop(stop types.Stop) {
@@ -72,6 +62,10 @@ func (g *GtfsWriter) AddTrips(trip types.Trip) {
 
 func (g *GtfsWriter) AddStopTimes(stopTimes []types.StopTime) {
 	g.stopTimes = append(g.stopTimes, stopTimes...)
+}
+
+func (g *GtfsWriter) AddShapes(shapes []types.Shape) {
+	g.shapes = append(g.shapes, shapes...)
 }
 
 func (g *GtfsWriter) AddCalendar(calendar types.Calendar) {
@@ -111,6 +105,12 @@ func (g *GtfsWriter) Sort() {
 		}
 		return a.StopSequence - b.StopSequence
 	})
+	slices.SortFunc(g.shapes, func(a, b types.Shape) int {
+		if a.ShapeId != b.ShapeId {
+			return strings.Compare(a.ShapeId, b.ShapeId)
+		}
+		return a.ShapePtSequence - b.ShapePtSequence
+	})
 }
 
 func (g *GtfsWriter) WriteToZip() error {
@@ -135,6 +135,11 @@ func (g *GtfsWriter) WriteToZip() error {
 	}
 	if err := g.writeCSVFile(g.stopTimes, "stop_times.txt"); err != nil {
 		return err
+	}
+	if g.supportsShapes {
+		if err := g.writeCSVFile(g.shapes, "shapes.txt"); err != nil {
+			return err
+		}
 	}
 	if err := g.actuallyWriteToZip(); err != nil {
 		return err
@@ -171,6 +176,12 @@ func (g *GtfsWriter) actuallyWriteToZip() error {
 		{"routes.txt", g.routes},
 		{"trips.txt", g.trips},
 		{"stop_times.txt", g.stopTimes},
+	}
+	if g.supportsShapes {
+		files = append(files, struct {
+			Name string
+			data interface{}
+		}{"shapes.txt", g.shapes})
 	}
 	for _, file := range files {
 		f, err := w.Create(file.Name)

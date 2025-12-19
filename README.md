@@ -42,7 +42,7 @@ TODO: Add instructions to get API key
 * 6 ignored trains
 
 **GTFS review report** (from [transport.data.gouv.fr](https://transport.data.gouv.fr/))
-https://transport.data.gouv.fr/validation/517981?token=18b3d9ec-ab04-4ee2-aa52-2443d550ab60
+https://transport.data.gouv.fr/validation/530918?token=c1ad8eab-6f3c-4d14-82be-72714e6430fd
 
 ## Users
 - [Transitous](https://transitous.org)
