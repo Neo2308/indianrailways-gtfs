@@ -190,16 +190,17 @@ func (t *TrainData) toTrip() types.Trip {
 		TripHeadsign:         strings.TrimSpace(t.TrainServiceProfileResponse.Pd.TrainServiceProfile.DestinationName),
 		DirectionId:          types.DirectionIdOutbound,
 		BlockId:              "",
-		ShapeId:              "",
+		ShapeId:              t.getTrainNumber(),
 		WheelchairAccessible: types.WheelChairAccessibilityNoInfo,
 		BikesAllowed:         types.BikesAllowedNoInfo,
 		CarsAllowed:          types.CarsAllowedNoInfo,
 	}
 }
 
-func (t *TrainData) toStopTimes() []types.StopTime {
+func (t *TrainData) toStopTimes() ([]types.StopTime, []types.Shape) {
 	// _ = t.LoadData()
 	stopTimes := []types.StopTime{}
+	shapes := []types.Shape{}
 	prevDistance := -1.0
 	for _, v := range t.TrainServiceProfileResponse.Pd.TrainServiceProfile.VTrainServiceSchedulePTT {
 		arrivalTime := convertSecondsToHHMMSS(v.PttArrivalTimeInSecond)
@@ -228,11 +229,28 @@ func (t *TrainData) toStopTimes() []types.StopTime {
 			DropOffType:       types.DropOffTypeRegularlyScheduled,
 			ShapeDistTraveled: prevDistance,
 		})
+		newStation := models.Station{
+			Code: v.StationCode,
+			Name: v.StationName,
+			Lat:  v.Lattitude,
+			Lng:  v.Longitude,
+		}
+		// TODO: Remove after fixing station issues
+		fixStation(&newStation, t.dataErrors)
+		lat, _ := strconv.ParseFloat(strings.TrimSpace(newStation.Lat), 64)
+		lng, _ := strconv.ParseFloat(strings.TrimSpace(newStation.Lng), 64)
+		shapes = append(shapes, types.Shape{
+			ShapeId:           t.getTrainNumber(),
+			ShapePtLat:        lat,
+			ShapePtLon:        lng,
+			ShapePtSequence:   v.SerialNumber,
+			ShapeDistTraveled: prevDistance,
+		})
 		if v.PttDepartureTimeInSecond == 0 {
 			break
 		}
 	}
-	return stopTimes
+	return stopTimes, shapes
 }
 
 func convertSecondsToHHMMSS(seconds int) string {
